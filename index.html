@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pembahasan & Bahan Belajar PSAS IPAS Kelas VI — SD Negeri Minomartani</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #312e81;
+      --secondary: #0284c7;
+      --success: #059669;
+      --success-bg: #ecfdf5;
+      --danger: #dc2626;
+      --danger-bg: #fef2f2;
+      --amber: #d97706;
+      --amber-bg: #fffbeb;
+      --purple: #7c3aed;
+      --bg-grad: linear-gradient(135deg, #0ea5e9 0%, #4f46e5 48%, #9333ea 100%);
+      --card-bg: rgba(255, 255, 255, 0.98);
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --font-scale: 1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Nunito', system-ui, -apple-system, sans-serif;
+      background: var(--bg-grad);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .hidden { display: none !important; }
+
+    /* Banner Sekolah */
+    .hero-banner {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 55%, #0369a1 100%);
+      color: #fff;
+      border-radius: 22px;
+      padding: 22px 26px;
+      margin-bottom: 16px;
+      border: 3px solid #fde047;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.24);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .school-badge {
+      display: inline-block;
+      background: #fde047;
+      color: #1e1b4b;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 4px 14px;
+      border-radius: 999px;
+      letter-spacing: 0.4px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .hero-banner h1 {
+      font-size: 23px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+    .hero-banner p {
+      font-size: 14px;
+      color: #bae6fd;
+      font-weight: 600;
+    }
+
+    /* Toolbar Kontrol Belajar */
+    .toolbar-card {
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      border-radius: 18px;
+      padding: 12px 18px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .toolbar-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 15px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 13.5px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .btn:hover:not(:disabled) { transform: translateY(-1px); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary { background: linear-gradient(135deg, #4f46e5, #0ea5e9); color: #fff; }
+    .btn-success { background: linear-gradient(135deg, #10b981, #059669); color: #fff; }
+    .btn-amber { background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; }
+    .btn-purple { background: linear-gradient(135deg, #8b5cf6, #ec4899); color: #fff; }
+    .btn-light { background: #f1f5f9; color: #1e293b; }
+    .btn-outline-light {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.22);
+    }
+    .btn-outline-light.active {
+      background: #fde047;
+      color: #1e1b4b;
+      border-color: #fde047;
+    }
+
+    .select-filter {
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: #1e293b;
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .font-controls {
+      display: inline-flex;
+      background: rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 3px;
+    }
+    .font-controls button {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-weight: 800;
+      padding: 4px 9px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .font-controls button.active {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+
+    /* Workspace Layout */
+    .study-workspace {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .main-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      margin-bottom: 18px;
+    }
+
+    .q-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid #f1f5f9;
+    }
+    .badge-no {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: #fff;
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+    .badge-bab {
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: 700;
+      padding: 5px 13px;
+      border-radius: 999px;
+      font-size: 12.5px;
+    }
+    .badge-type {
+      background: #f3e8ff;
+      color: #6b21a8;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    .q-text {
+      font-size: calc(16.5px * var(--font-scale));
+      line-height: 1.72;
+      color: #0f172a;
+      white-space: pre-line;
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+
+    /* Stimulus Gambar */
+    .image-box {
+      background: #f8fafc;
+      border: 2px solid #e0e7ff;
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .image-box img {
+      max-width: 100%;
+      max-height: 340px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      cursor: zoom-in;
+      display: block;
+      margin: 0 auto 6px;
+    }
+    .img-hint {
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .img-fallback {
+      padding: 16px;
+      background: linear-gradient(135deg, #eef2ff, #f0f9ff);
+      border-radius: 12px;
+      border: 1px dashed #93c5fd;
+      color: #1e3a8a;
+    }
+
+    /* Opsi Jawaban */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .option-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 13px 16px;
+      border-radius: 14px;
+      border: 2px solid #e2e8f0;
+      background: #fff;
+      font-size: calc(15.5px * var(--font-scale));
+      transition: all 0.16s ease;
+    }
+    .option-row.interactive {
+      cursor: pointer;
+    }
+    .option-row.interactive:hover {
+      border-color: #818cf8;
+      background: #eef2ff;
+    }
+    .option-row.correct {
+      border-color: #10b981;
+      background: #ecfdf5;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.14);
+    }
+    .option-row.wrong-picked {
+      border-color: #ef4444;
+      background: #fef2f2;
+    }
+    .opt-letter {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .option-row.correct .opt-letter {
+      background: #10b981;
+      color: #fff;
+    }
+    .option-row.wrong-picked .opt-letter {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    /* Tabel Benar/Salah */
+    .bs-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      font-size: calc(15px * var(--font-scale));
+    }
+    .bs-table th {
+      background: #312e81;
+      color: #fff;
+      padding: 11px 14px;
+      text-align: left;
+    }
+    .bs-table th.center, .bs-table td.center {
+      text-align: center;
+      width: 120px;
+    }
+    .bs-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid #e2e8f0;
+      background: #fff;
+    }
+    .pill-benar {
+      display: inline-block;
+      background: #dcfce7;
+      color: #166534;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+    .pill-salah {
+      display: inline-block;
+      background: #fee2e2;
+      color: #991b1b;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    /* Kotak Pembahasan Detail */
+    .pembahasan-box {
+      background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%);
+      border: 2.5px solid #10b981;
+      border-radius: 20px;
+      padding: 20px 22px;
+      margin-top: 14px;
+    }
+    .pembahasan-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1.5px dashed #86efac;
+    }
+    .pembahasan-title {
+      font-size: 17px;
+      font-weight: 900;
+      color: #065f46;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .kunci-banner {
+      background: #065f46;
+      color: #fff;
+      padding: 11px 16px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: calc(15px * var(--font-scale));
+      margin-bottom: 14px;
+    }
+    .pembahasan-section {
+      margin-bottom: 14px;
+      font-size: calc(15.5px * var(--font-scale));
+      color: #1e293b;
+      line-height: 1.7;
+      white-space: pre-line;
+    }
+    .pembahasan-section h4 {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #1e3a8a;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .analisis-list {
+      padding-left: 20px;
+      margin-top: 4px;
+    }
+    .analisis-list li {
+      margin-bottom: 5px;
+      line-height: 1.6;
+    }
+    .tips-box {
+      background: #fefce8;
+      border: 1.5px solid #facc15;
+      border-radius: 12px;
+      padding: 11px 15px;
+      color: #854d0e;
+      font-weight: 700;
+      font-size: calc(14.5px * var(--font-scale));
+      margin-top: 10px;
+    }
+
+    /* Panel Navigasi Nomor Soal */
+    .nav-sidebar {
+      width: 245px;
+      flex-shrink: 0;
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
+      position: sticky;
+      top: 16px;
+    }
+    .nav-sidebar h3 {
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #1e293b;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      max-height: 360px;
+      overflow-y: auto;
+    }
+    .nav-item {
+      aspect-ratio: 1;
+      border: none;
+      border-radius: 9px;
+      font-weight: 800;
+      font-size: 12px;
+      cursor: pointer;
+      background: #e2e8f0;
+      color: #334155;
+      transition: transform 0.12s;
+    }
+    .nav-item:hover { transform: scale(1.08); }
+    .nav-item.studied { background: #10b981; color: #fff; }
+    .nav-item.active { outline: 3px solid #4f46e5; transform: scale(1.06); }
+
+    .nav-footer-btns {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 2px solid #f1f5f9;
+    }
+
+    /* Modal Zoom Gambar */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.8);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    @media (max-width: 880px) {
+      .study-workspace { flex-direction: column; }
+      .nav-sidebar { width: 100%; position: static; }
+      .nav-grid { grid-template-columns: repeat(10, 1fr); }
+    }
+
+    @media print {
+      body { background: #fff !important; }
+      .toolbar-card, .nav-sidebar, .nav-footer-btns, .btn-speak, .img-hint { display: none !important; }
+      .card { box-shadow: none !important; border: 1px solid #cbd5e1 !important; page-break-inside: avoid; }
+      .pembahasan-box { border: 1.5px solid #059669 !important; }
+    }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" src="backsound.mp3" loop preload="auto"></audio>
+
+  <div class="container">
+    <!-- HEADER BANNER -->
+    <header class="hero-banner">
+      <div>
+        <div class="school-badge">📘 BUKU PEMBAHASAN DIGITAL — SD NEGERI MINOMARTANI</div>
+        <h1>Kunci Jawaban & Pembahasan Detail PSAS IPAS Kelas VI</h1>
+        <p>Bahan Belajar Mandiri Pasca-Ujian • 40 Soal Lengkap dengan Analisis & Tips Cepat</p>
+      </div>
+      <div style="text-align:right;">
+        <div style="background:rgba(255,255,255,0.14); padding:10px 16px; border-radius:14px; font-size:13px;">
+          <div>✅ <strong>Mode Belajar Terbuka</strong></div>
+          <div style="color:#fde047; font-weight:700;" id="progressBadge">Dipahami: 1 / 40 Soal</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- TOOLBAR PENGATURAN BELAJAR -->
+    <div class="toolbar-card">
+      <div class="toolbar-group">
+        <button type="button" id="btnModeDirect" class="btn btn-outline-light active" onclick="setStudyMode('direct')">
+          📖 Pembahasan Langsung
+        </button>
+        <button type="button" id="btnModeQuiz" class="btn btn-outline-light" onclick="setStudyMode('quiz')">
+          🧠 Uji Pemahaman Ulang
+        </button>
+        <button type="button" id="btnViewSingle" class="btn btn-outline-light active" onclick="setViewLayout('single')">
+          1️⃣ Per Soal
+        </button>
+        <button type="button" id="btnViewAll" class="btn btn-outline-light" onclick="setViewLayout('all')">
+          📑 Semua Soal (1–40)
+        </button>
+      </div>
+
+      <div class="toolbar-group">
+        <select id="filterTopic" class="select-filter" onchange="applyTopicFilter()">
+          <option value="all">📚 Semua Materi (40 Soal)</option>
+          <option value="bab1">🥗 Bab 1: Sistem Pencernaan & Gizi</option>
+          <option value="bab2">🫁 Bab 2: Sistem Pernapasan</option>
+          <option value="bab3">🇮🇩 Bab 3: Sejarah & Pahlawan</option>
+          <option value="pg">🔘 Bagian I: Pilihan Ganda (1–29)</option>
+          <option value="pgk">☑️ Bagian II: PG Kompleks (30–35)</option>
+          <option value="uraian">✍️ Bagian III: Uraian (36–40)</option>
+        </select>
+
+        <div class="font-controls" title="Ukuran Huruf">
+          <button type="button" onclick="setFontScale(0.9, this)">A-</button>
+          <button type="button" class="active" onclick="setFontScale(1, this)">A</button>
+          <button type="button" onclick="setFontScale(1.15, this)">A+</button>
+        </div>
+
+        <button type="button" id="btnMusic" class="btn btn-light" onclick="toggleMusic()">🔇 Musik</button>
+        <button type="button" class="btn btn-amber" onclick="printStudyGuide()">🖨️ Cetak / PDF</button>
+      </div>
+    </div>
+
+    <!-- WORKSPACE UTAMA -->
+    <div class="study-workspace">
+      <main class="main-content" id="questionsContainer"></main>
+
+      <aside class="nav-sidebar" id="navSidebar">
+        <h3>🧭 Navigasi Nomor Soal</h3>
+        <div class="nav-grid" id="navGrid"></div>
+        <div style="margin-top:12px; font-size:11.5px; color:#64748b; line-height:1.5;">
+          <div>🟩 Hijau: Sudah dibaca/dipelajari</div>
+          <div>🟦 Garis Ungu: Soal yang sedang dibuka</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- MODAL ZOOM GAMBAR -->
+  <div id="zoomModal" class="modal-backdrop hidden" onclick="this.classList.add('hidden')">
+    <img id="zoomedImg" src="" alt="Perbesar Gambar" style="max-width:92vw; max-height:90vh; border-radius:16px; box-shadow:0 20px 50px rgba(0,0,0,0.6);" />
+  </div>
+
+  <script>
+    const BANK_PEMBAHASAN = [{"id": 1, "bagian": "I", "tipe": "pg", "teks": "Perhatikan pernyataan-pernyataan mengenai aktivitas organ tubuh manusia berikut:\n1. Menghirup gas oksigen dari udara bebas dan mengeluarkannya dalam bentuk gas karbon dioksida.\n2. Memecah dan mengolah molekul makanan kompleks menjadi zat gizi sederhana yang dapat diserap tubuh.\n3. Memompa darah beroksigen ke seluruh jaringan tubuh dan menampung darah balik berkarbon dioksida.\n4. Menghasilkan sel-sel darah baru dan mengatur keseimbangan cairan imunitas melalui pembuluh limfa.\n\nFungsi utama dari sistem pencernaan makanan pada tubuh manusia ditunjukkan oleh nomor...", "gambar": null, "opsi": [{"id": "A", "teks": "1, karena pencernaan berkaitan dengan pengambilan energi dari pembakaran oksigen di jaringan tubuh."}, {"id": "B", "teks": "2, karena pencernaan menguraikan nutrisi makanan agar dapat diserap dinding usus dan diedarkan darah."}, {"id": "C", "teks": "3, karena pencernaan membutuhkan dorongan aliran darah yang kuat untuk mengalirkan sari makanan."}, {"id": "D", "teks": "4, melepaskan sel-sel kekebalan tubuh ke dalam saluran pencernaan guna melawan bakteri makanan."}], "kunci": "B", "pembahasan": {"bab": "Bab 1 • Sistem Pencernaan Manusia", "topik": "Fungsi Utama Sistem Pencernaan", "ringkasan_kunci": "B. 2, karena pencernaan menguraikan nutrisi makanan agar dapat diserap dinding usus dan diedarkan darah.", "penjelasan": "Sistem pencernaan manusia bertugas mengolah makanan yang kita makan (karbohidrat, protein, lemak) dari bentuk molekul kompleks menjadi zat gizi sederhana (glukosa, asam amino, asam lemak) melalui proses mekanis dan kimiawi. Sari-sari makanan sederhana inilah yang kemudian diserap oleh dinding usus halus untuk diedarkan darah ke seluruh sel tubuh sebagai sumber energi dan pertumbuhan.", "analisis_opsi": ["Pernyataan 1 (Opsi A): Menjelaskan fungsi sistem pernapasan (pertukaran oksigen dan karbon dioksida).", "Pernyataan 2 (Opsi B — BENAR): Menjelaskan fungsi inti sistem pencernaan dalam memecah molekul makanan menjadi zat gizi sederhana.", "Pernyataan 3 (Opsi C): Menjelaskan fungsi sistem peredaran darah (jantung memompa darah).", "Pernyataan 4 (Opsi D): Menjelaskan fungsi sistem kekebalan tubuh dan sistem limfatik."], "tips": "Ingat kata kunci: Pernapasan = Gas O2/CO2 | Peredaran Darah = Memompa darah | Pencernaan = Mengolah makanan jadi nutrisi."}}, {"id": 2, "bagian": "I", "tipe": "pg", "teks": "Bacalah narasi perjalanan makanan berikut dengan cermat!\n\nBanu mengonsumsi sepotong roti tawar saat sarapan pagi. Roti tersebut pertama kali masuk ke dalam rongga mulut untuk dikunyah oleh gigi dan dibasahi air liur. Setelah ditelan, bola makanan meluncur melewati saluran berbentuk pipa elastis menuju kantong besar di sebelah kiri perut. Di kantong tersebut, makanan diaduk hingga menjadi bubur pekat. Selanjutnya, bubur makanan dialirkan ke saluran berlipat-lipat yang sangat panjang untuk diserap sari-sarinya, sebelum sisa-sisa airnya diserap kembali di saluran besar dan akhirnya dikeluarkan melalui lubang pembuangan akhir.\n\nBerdasarkan narasi tersebut, urutan organ pencernaan yang dilalui oleh roti tawar secara berurutan adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Mulut → kerongkongan (esofagus) → lambung → usus halus → usus besar → rektum dan anus."}, {"id": "B", "teks": "Mulut → tenggorokan (trakea) → lambung → usus besar → usus halus → rektum dan anus."}, {"id": "C", "teks": "Mulut → kerongkongan (esofagus) → usus halus → lambung → usus besar → rektum dan anus."}, {"id": "D", "teks": "Mulut → tenggorokan (trakea) → usus halus → usus besar → lambung → rektum dan anus."}], "kunci": "A", "pembahasan": {"bab": "Bab 1 • Sistem Pencernaan Manusia", "topik": "Urutan Saluran Pencernaan Manusia", "ringkasan_kunci": "A. Mulut → kerongkongan (esofagus) → lambung → usus halus → usus besar → rektum dan anus.", "penjelasan": "Perjalanan makanan di dalam tubuh manusia mengikuti saluran pencernaan secara berurutan:\n1. Mulut: Makanan dikunyah oleh gigi (mekanis) dan dibasahi air liur berenzim amilase (kimiawi).\n2. Kerongkongan (Esofagus): Pipa elastis yang mendorong bolus makanan menuju lambung dengan gerakan meremas yang disebut gerak peristaltik.\n3. Lambung: Kantong besar di sebelah kiri perut yang mengaduk makanan menjadi bubur pekat (kimus) dengan bantuan asam lambung dan enzim.\n4. Usus Halus: Saluran panjang berlipat tempat penyerapan sari-sari makanan.\n5. Usus Besar: Tempat penyerapan kembali sisa air dan pembusukan sisa makanan oleh bakteri E. coli.\n6. Rektum & Anus: Tempat penyimpanan sementara dan lubang pengeluaran feses.", "analisis_opsi": ["Opsi A (BENAR): Urutan organ pencernaan dari awal hingga akhir tepat seluruhnya.", "Opsi B & D (SALAH): Menyebut 'tenggorokan (trakea)', padahal trakea adalah saluran pernapasan, bukan pencernaan.", "Opsi C (SALAH): Menukar posisi usus halus sebelum lambung; seharusnya makanan masuk ke lambung terlebih dahulu baru ke usus halus."], "tips": "Jangan tertukar! Kerongkongan (esofagus) = saluran makanan; Tenggorokan (trakea) = saluran napas."}}, {"id": 3, "bagian": "I", "tipe": "pg", "teks": "Perhatikan daftar organ pencernaan berikut:\n1. Mulut\n2. Kerongkongan (Esofagus)\n3. Lambung\n4. Usus Halus\n5. Usus Besar\n\nPencernaan kimiawi merupakan proses penguraian zat makanan dengan bantuan enzim-enzim pencernaan. Organ pencernaan manusia yang menjadi tempat berlangsungnya proses pencernaan kimiawi ditunjukkan oleh nomor...", "gambar": null, "opsi": [{"id": "A", "teks": "1, 2, dan 3, karena kerongkongan menghasilkan enzim lipase untuk memecah lemak makanan."}, {"id": "B", "teks": "1, 3, dan 4, karena mulut, lambung, dan usus halus mensekresikan enzim pengurai karbohidrat, protein, dan lemak."}, {"id": "C", "teks": "2, 3, dan 5, karena usus besar memproduksi enzim pembusuk sisa makanan sebelum menjadi feses."}, {"id": "D", "teks": "3, 4, dan 5, karena pencernaan kimiawi hanya terjadi di organ saluran perut bagian bawah."}], "kunci": "B", "pembahasan": {"bab": "Bab 1 • Sistem Pencernaan Manusia", "topik": "Organ Tempat Pencernaan Kimiawi", "ringkasan_kunci": "B. 1, 3, dan 4 (Mulut, Lambung, dan Usus Halus).", "penjelasan": "Pencernaan dibagi menjadi dua jenis:\n• Pencernaan Mekanis: Mengubah ukuran makanan secara fisik (dikunyah gigi di mulut, gerak peristaltik di kerongkongan, diremas otot lambung).\n• Pencernaan Kimiawi: Menguraikan zat makanan secara kimiawi menggunakan enzim-enzim pencernaan. Proses ini hanya terjadi pada 3 organ utama:\n  1. Mulut: Menghasilkan enzim amilase/ptialin (mengubah amilum/karbohidrat menjadi zat gula).\n  3. Lambung: Menghasilkan enzim pepsin (mengubah protein menjadi pepton) dan renin (mengendapkan protein susu), dibantu HCl.\n  4. Usus Halus: Menerima enzim dari pankreas (amilase, tripsin, lipase) untuk menyelesaikan penguraian seluruh nutrisi.", "analisis_opsi": ["Opsi A (SALAH): Kerongkongan (nomor 2) tidak menghasilkan enzim lipase; di kerongkongan hanya terjadi gerak peristaltik (mekanis).", "Opsi B (BENAR): Mulut (1), Lambung (3), dan Usus Halus (4) adalah tiga organ tempat pencernaan kimiawi berlangsung.", "Opsi C & D (SALAH): Usus besar (nomor 5) tidak menghasilkan enzim pencernaan; fungsinya menyerap air dan membusukkan sisa makanan dengan bantuan bakteri."], "tips": "Hafalkan singkatan 'Mu-La-UHal': Mulut, Lambung, Usus Halus adalah 3 organ tempat pencernaan kimiawi!"}}, {"id": 4, "bagian": "I", "tipe": "pg", "teks": "Perhatikan Kartu Gambar Organ Pencernaan berikut!\n\nBerdasarkan kedua kartu gambar organ di atas, jenis enzim pencernaan yang secara spesifik dihasilkan oleh organ pada Kartu A dan Kartu B secara berurutan adalah...", "gambar": {"filename": "soal_04_kartu_organ_pencernaan.png", "deskripsi": "Kartu A menampilkan ilustrasi Organ Lambung (kantong huruf J) dan Kartu B menampilkan ilustrasi Organ Mulut (gigi, lidah, kelenjar ludah)."}, "opsi": [{"id": "A", "teks": "Enzim pepsin dan asam klorida (HCl) pada Kartu A; enzim amilase (ptialin) pada Kartu B."}, {"id": "B", "teks": "Enzim amilase (ptialin) pada Kartu A; enzim tripsin dan lipase pankreas pada Kartu B."}, {"id": "C", "teks": "Enzim lipase pankreas pada Kartu A; enzim asam empedu dan pepsinogen pada Kartu B."}, {"id": "D", "teks": "Enzim maltase dan sukrase pada Kartu A; enzim renin dan pepsin pencerna susu pada Kartu B."}], "kunci": "A", "pembahasan": {"bab": "Bab 1 • Sistem Pencernaan Manusia", "topik": "Enzim pada Lambung dan Mulut", "ringkasan_kunci": "A. Enzim pepsin dan asam klorida (HCl) pada Kartu A; enzim amilase (ptialin) pada Kartu B.", "penjelasan": "Perhatikan gambar pada kedua kartu:\n• Kartu A menunjukkan Organ Lambung (berbentuk kantong menyerupai huruf J). Dinding lambung menghasilkan getah lambung yang berisi Asam Klorida (HCl) untuk membunuh kuman penyakit dan mengasamkan makanan, enzim Pepsin untuk memecah protein menjadi pepton, serta enzim Renin untuk menggumpalkan protein susu.\n• Kartu B menunjukkan Organ Mulut (terdapat gigi, lidah, dan kelenjar ludah). Kelenjar ludah menghasilkan air liur yang mengandung enzim Amilase (Ptialin) untuk mengubah zat tepung (amilum) menjadi gula sederhana (maltosa).", "analisis_opsi": ["Opsi A (BENAR): Tepat memasangkan pepsin & HCl pada lambung (Kartu A) serta amilase/ptialin pada mulut (Kartu B).", "Opsi B (SALAH): Amilase/ptialin dihasilkan di mulut, sedangkan tripsin & lipase dihasilkan pankreas menuju usus halus.", "Opsi C (SALAH): Empedu dihasilkan oleh hati, bukan lambung.", "Opsi D (SALAH): Maltase dan sukrase bekerja di usus halus, sedangkan renin & pepsin bekerja di lambung (terbalik)."], "tips": "Mulut mengunyah nasi/roti (karbohidrat) jadi terasa agak manis karena kerja enzim Amilase (Ptialin)."}}, {"id": 5, "bagian": "I", "tipe": "pg", "teks": "Perhatikan gambar sistem pencernaan manusia berikut!\n\nOrgan pencernaan yang berfungsi utama menyerap sari-sari makanan dan nutrisi untuk diedarkan ke seluruh tubuh ditunjukkan oleh huruf...", "gambar": {"filename": "soal_05_anatomi_pencernaan.png", "deskripsi": "Ilustrasi anatomi sistem pencernaan manusia dengan penanda huruf P (Mulut), Q (Kerongkongan), R (Lambung), S (Usus Halus), dan T (Usus Besar)."}, "opsi": [{"id": "A", "teks": "Huruf Q, karena saluran pipa esofagus meremas dan menyerap sari makanan cair."}, {"id": "B", "teks": "Huruf R, karena dinding lambung menyerap protein dan karbohidrat secara langsung."}, {"id": "C", "teks": "Huruf S, karena permukaan vili pada usus halus khusus menyerap molekul nutrisi."}, {"id": "D", "teks": "Huruf T, karena usus besar merupakan tempat penyerapan utama sari makanan padat."}], "kunci": "C", "pembahasan": {"bab": "Bab 1 • Sistem Pencernaan Manusia", "topik": "Fungsi Penyerapan Sari Makanan pada Usus Halus", "ringkasan_kunci": "C. Huruf S, karena permukaan vili pada usus halus khusus menyerap molekul nutrisi.", "penjelasan": "Identifikasi penanda huruf pada gambar anatomi pencernaan:\n• P = Mulut (mengunyah dan mencerna amilum)\n• Q = Kerongkongan / Esofagus (menyalurkan makanan ke lambung)\n• R = Lambung (mengaduk makanan dan mencerna protein)\n• S = Usus Halus (saluran panjang ±6 meter yang dinding dalamnya memiliki tonjolan halus seperti jari bernama vili/jonjot usus untuk memperluas bidang penyerapan sari-sari makanan ke pembuluh darah)\n• T = Usus Besar (menyerap air dan membentuk feses)", "analisis_opsi": ["Opsi A (SALAH): Q adalah kerongkongan yang hanya mendorong makanan, tidak menyerap sari makanan.", "Opsi B (SALAH): R adalah lambung yang mencerna makanan menjadi bubur kimus, belum melakukan penyerapan utama nutrisi.", "Opsi C (BENAR): S adalah usus halus dengan jonjot vili yang bertugas menyerap sari-sari nutrisi makanan.", "Opsi D (SALAH): T adalah usus besar yang menyerap air dan garam mineral dari sisa makanan."], "tips": "Usus Halus = menyerap SARI makanan; Usus Besar = menyerap AIR dari sisa makanan."}}, {"id": 6, "bagian": "I", "tipe": "pg", "teks": "Perhatikan gambar dua organ pencernaan berikut!\n\nPasangan fungsi pencernaan yang tepat dan sesuai untuk Organ I dan Organ II adalah...", "gambar": {"filename": "soal_06_lambung_usus_halus.png", "deskripsi": "Perbandingan Gambar I (Organ Lambung berbentuk kantong huruf J) dan Gambar II (Organ Usus Halus berupa saluran berbelit-belit panjang)."}, "opsi": [{"id": "A", "teks": "Organ I mengaduk makanan menjadi bubur kimus dengan asam lambung; Organ II menyerap sari-sari nutrisi makanan."}, {"id": "B", "teks": "Organ I menyerap air dan ion elektrolit sisa makanan; Organ II meremas makanan dengan gerakan peristaltik."}, {"id": "C", "teks": "Organ I menghancurkan makanan secara mekanis dengan gigi; Organ II menghasilkan cairan empedu pencerna lemak."}, {"id": "D", "teks": "Organ I menyimpan feses sementara sebelum defekasi; Organ II membunuh kuman penyakit dengan kadar asam tinggi."}], "kunci": "A", "pembahasan": {"bab": "Bab 1 • Sistem Pencernaan Manusia", "topik": "Perbandingan Fungsi Lambung dan Usus Halus", "ringkasan_kunci": "A. Organ I mengaduk makanan menjadi bubur kimus dengan asam lambung; Organ II menyerap sari-sari nutrisi makanan.", "penjelasan": "Gambar menunjukkan dua organ pencernaan utama:\n• Organ I adalah Lambung: Otot dinding lambung meremas dan mengaduk makanan secara mekanis serta mencampurnya dengan asam lambung (HCl) dan enzim hingga menjadi bubur halus bernama kimus.\n• Organ II adalah Usus Halus: Bubur makanan dari lambung masuk ke usus halus untuk dicerna lebih lanjut oleh enzim pankreas dan diserap sari-sari makanannya oleh dinding usus.", "analisis_opsi": ["Opsi A (BENAR): Menggambarkan pasangan fungsi lambung (Organ I) dan usus halus (Organ II) secara tepat.", "Opsi B (SALAH): Penyerapan air terjadi di usus besar, sedangkan gerakan peristaltik mendorong makanan terjadi di kerongkongan.", "Opsi C (SALAH): Gigi berada di mulut, sedangkan cairan empedu dihasilkan oleh hati.", "Opsi D (SALAH): Feses disimpan sementara di rektum (ujung usus besar), bukan di lambung."], "tips": "Lambung menghasilkan bubur 'kimus' (berisi asam & enzim), lalu dikirim ke Usus Halus untuk diserap sarinya."}}, {"id": 7, "bagian": "I", "tipe": "pg", "teks": "Dara mengalami luka lecet pada lututnya setelah terjatuh saat berolahraga. Dokter menyarankan Dara untuk mengonsumsi kelompok bahan makanan yang kaya akan zat gizi protein guna mempercepat proses pertumbuhan sel-sel baru dan perbaikan jaringan tubuh yang rusak.\n\nKelompok bahan makanan berikut yang merupakan sumber protein yang sangat tepat untuk mendukung penyembuhan Dara adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Nasi putih, singkong rebus, jagung bakar, dan ubi jalar."}, {"id": "B", "teks": "Telur ayam, ikan segar, tempe, tahu, dan daging dada ayam."}, {"id": "C", "teks": "Minyak kelapa, mentega, santan kental, dan lemak sapi."}, {"id": "D", "teks": "Buah jeruk, sayur bayam, buah semangka, dan mentimun."}], "kunci": "B", "pembahasan": {"bab": "Bab 1 • Zat Gizi Makanan", "topik": "Fungsi dan Sumber Protein", "ringkasan_kunci": "B. Telur ayam, ikan segar, tempe, tahu, dan daging dada ayam.", "penjelasan": "Zat gizi makanan memiliki fungsi khusus bagi tubuh:\n• Protein berperan sebagai zat pembangun tubuh, membentuk sel-sel baru, dan memperbaiki jaringan tubuh yang rusak atau terluka (seperti luka lecet pada lutut Dara). Protein terbagi menjadi protein hewani (telur, ikan, daging, susu) dan protein nabati (tempe, tahu, kacang-kacangan).", "analisis_opsi": ["Opsi A (SALAH): Nasi putih, singkong, jagung, dan ubi jalar merupakan sumber utama Karbohidrat (penghasil energi utama).", "Opsi B (BENAR): Telur, ikan, tempe, tahu, dan daging ayam merupakan sumber kaya Protein.", "Opsi C (SALAH): Minyak kelapa, mentega, santan, dan lemak sapi merupakan sumber Lemak (cadangan energi & pelarut vitamin A, D, E, K).", "Opsi D (SALAH): Buah jeruk, bayam, semangka, dan mentimun merupakan sumber Vitamin, Mineral, dan Serat."], "tips": "Luka cepat sembuh dan tubuh tumbuh tinggi membutuhkan PROTEIN (lauk-pauk hewani maupun nabati)."}}, {"id": 8, "bagian": "I", "tipe": "pg", "teks": "Budi memiliki kebiasaan sering menunda waktu makan siang karena sibuk bermain gim. Selain itu, ia sangat gemar mengonsumsi makanan yang sangat pedas dan minum kopi kekinian saat perutnya kosong. Akibatnya, Budi sering mengeluhkan rasa perih, mual, dan panas seperti terbakar di bagian perut atas (ulu hati).\n\nBerdasarkan kasus kebiasaan makan dan gejala tersebut, gangguan sistem pencernaan yang kemungkinan besar dialami oleh Budi adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Diare, akibat infeksi bakteri yang menyebabkan pembusukan berlebihan di usus besar."}, {"id": "B", "teks": "Gastritis (Maag/GERD), akibat peradangan dinding lambung akibat asam lambung berlebih."}, {"id": "C", "teks": "Konstipasi (Sembelit), akibat kurangnya asupan serat sehingga feses menjadi sangat keras."}, {"id": "D", "teks": "Apendisitis (Usus Buntu), akibat penumpukan sisa makanan beracun pada umbai cacing."}], "kunci": "B", "pembahasan": {"bab": "Bab 1 • Gangguan Sistem Pencernaan", "topik": "Gastritis (Maag / GERD)", "ringkasan_kunci": "B. Gastritis (Maag/GERD), akibat peradangan dinding lambung akibat asam lambung berlebih.", "penjelasan": "Kebiasaan menunda jadwal makan membuat lambung kosong dalam waktu lama sehingga asam lambung (HCl) melukai dinding lambung. Ditambah lagi makanan pedas dan kafein pada kopi merangsang peningkatan produksi asam lambung dan melemahkan katup kerongkongan bawah. Hal ini memicu Gastritis (Maag) maupun GERD dengan gejala perih, mual, dan sensasi terbakar di ulu hati.", "analisis_opsi": ["Opsi A (SALAH): Diare ditandai dengan buang air besar cair/encer berulang kali akibat infeksi bakteri/virus.", "Opsi B (BENAR): Gastritis (Maag/GERD) sesuai dengan pemicu telat makan/pedas/kopi dan gejala perih di ulu hati.", "Opsi C (SALAH): Konstipasi (sembelit) ditandai dengan sulit buang air besar karena feses keras dan kurang serat.", "Opsi D (SALAH): Apendisitis (radang usus buntu) ditandai nyeri tajam di perut kanan bawah."], "tips": "Telat makan + makanan pedas/kopi + nyeri/perih di ulu hati = ciri khas Maag / Gastritis."}}, {"id": 9, "bagian": "I", "tipe": "pg", "teks": "Perhatikan tabel gangguan sistem pencernaan dan gejalanya berikut!\n1. Diare → BAB cair lebih dari 3 kali sehari akibat infeksi kuman di usus besar.\n2. Konstipasi → Perut perih dan ulu hati panas akibat peningkatan produksi asam lambung.\n3. Maag → Buang air besar terasa sangat keras dan sulit akibat usus kurang serat.\n4. GERD → Asam lambung naik kembali ke saluran kerongkongan menyebabkan dada terasa panas.\n\nPasangan antara nama gangguan pencernaan dan gejala yang paling tepat pada tabel di atas ditunjukkan oleh nomor...", "gambar": null, "opsi": [{"id": "A", "teks": "1 dan 2"}, {"id": "B", "teks": "1 dan 4"}, {"id": "C", "teks": "2 dan 3"}, {"id": "D", "teks": "3 dan 4"}], "kunci": "B", "pembahasan": {"bab": "Bab 1 • Gangguan Sistem Pencernaan", "topik": "Pasangan Penyakit Pencernaan dan Gejalanya", "ringkasan_kunci": "B. 1 dan 4.", "penjelasan": "Mari kita periksa kebenaran setiap baris pada tabel:\n• Nomor 1 (BENAR): Diare adalah gangguan pencernaan berupa buang air besar encer/cair lebih dari 3 kali sehari akibat infeksi kuman/bakteri di saluran usus.\n• Nomor 2 (SALAH): Konstipasi (sembelit) adalah sulit BAB karena feses keras akibat kurang serat dan air, bukan perih ulu hati.\n• Nomor 3 (SALAH): Maag adalah rasa perih dan nyeri di ulu hati/lambung, bukan BAB keras.\n• Nomor 4 (BENAR): GERD (Gastroesophageal Reflux Disease) adalah naiknya asam lambung ke kerongkongan sehingga dada terasa panas seperti terbakar (heartburn).", "analisis_opsi": ["Opsi A, C, dan D (SALAH): Memuat nomor 2 atau 3 yang definisinya tertukar antara konstipasi dan maag.", "Opsi B (BENAR): Hanya pernyataan 1 dan 4 yang benar."], "tips": "Diare = BAB cair; Konstipasi = BAB keras/susah; Maag = perih lambung; GERD = asam lambung naik ke dada/kerongkongan."}}, {"id": 10, "bagian": "I", "tipe": "pg", "teks": "Siti sering mengeluhkan perut mules dan buang air besar yang sangat encer setelah jajan sembarangan di pinggir jalan yang terbuka dan banyak dihinggapi lalat. Berdasarkan gejala tersebut, langkah pencegahan paling tepat yang harus diterapkan Siti agar tidak mengalami gangguan pencernaan serupa adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Mengonsumsi makanan pedas setiap hari untuk mematikan kuman penyakit di dalam perut."}, {"id": "B", "teks": "Mencuci tangan pakai sabun sebelum makan serta memilih makanan yang bersih dan tertutup."}, {"id": "C", "teks": "Mengurangi minum air putih agar frekuensi buang air besar di kamar mandi berkurang."}, {"id": "D", "teks": "Meminum vitamin dosis tinggi tanpa perlu mengubah kebiasaan jajan di tempat terbuka."}], "kunci": "B", "pembahasan": {"bab": "Bab 1 • Menjaga Kesehatan Pencernaan", "topik": "Pencegahan Diare", "ringkasan_kunci": "B. Mencuci tangan pakai sabun serta memilih makanan yang bersih dan tertutup.", "penjelasan": "Gejala perut mulas dan buang air besar encer setelah jajan di tempat terbuka yang dihinggapi lalat menunjukkan Siti mengalami Diare. Lalat membawa bakteri penyebab diare (seperti E. coli atau Salmonella) dari tempat kotor ke makanan yang tidak tertutup. Pencegahan paling efektif adalah menjaga higienitas diri dengan mencuci tangan pakai sabun sebelum makan dan memastikan makanan bersih serta tertutup rapat.", "analisis_opsi": ["Opsi A (SALAH): Makanan pedas justru mengiritasi saluran pencernaan dan memperparah diare.", "Opsi B (BENAR): Mencuci tangan pakai sabun dan memilih makanan higienis memutus rantai masuknya kuman penyebab diare.", "Opsi C (SALAH): Penderita diare justru wajib memperbanyak minum air putih atau oralit untuk mencegah dehidrasi.", "Opsi D (SALAH): Vitamin tidak bisa mencegah infeksi kuman jika tetap jajan makanan yang tercemar lalat."], "tips": "Pencegahan utama penyakit menular saluran cerna (diare/tifus) adalah PHBS: Cuci tangan pakai sabun & jajanan higienis tertutup."}}, {"id": 11, "bagian": "I", "tipe": "pg", "teks": "Perhatikan daftar organ sistem pernapasan manusia yang tersusun secara acak berikut:\n1. Alveolus\n2. Bronkus\n3. Rongga Hidung\n4. Trakea (Batang Tenggorokan)\n5. Laring (Pangkal Tenggorokan)\n6. Bronkiolus\n\nUrutan alur perjalanan udara bersih yang tepat saat manusia menarik napas (inspirasi) adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "3 → 4 → 5 → 2 → 6 → 1"}, {"id": "B", "teks": "3 → 5 → 4 → 2 → 6 → 1"}, {"id": "C", "teks": "3 → 5 → 2 → 4 → 1 → 6"}, {"id": "D", "teks": "3 → 4 → 2 → 5 → 6 → 1"}], "kunci": "B", "pembahasan": {"bab": "Bab 2 • Sistem Pernapasan Manusia", "topik": "Urutan Saluran Pernapasan saat Inspirasi", "ringkasan_kunci": "B. 3 → 5 → 4 → 2 → 6 → 1.", "penjelasan": "Saat kita menarik napas (inspirasi), udara masuk melalui saluran pernapasan dengan urutan sebagai berikut:\n1. Rongga Hidung (3): Tempat masuknya udara, disaring rambut hidung, dilembapkan selaput lendir, dan dihangatkan.\n2. Laring / Pangkal Tenggorokan (5): Saluran penghubung setelah faring yang terdapat pita suara.\n3. Trakea / Batang Tenggorokan (4): Pipa bercincin tulang rawan yang dilengkapi silia penyaring debu halus.\n4. Bronkus (2): Dua cabang utama trakea yang menuju paru-paru kanan dan kiri.\n5. Bronkiolus (6): Cabang-cabang kecil dari bronkus di dalam paru-paru.\n6. Alveolus (1): Kantong udara mikroskopis di ujung bronkiolus tempat pertukaran O2 dan CO2.", "analisis_opsi": ["Opsi A & D (SALAH): Menempatkan trakea (4) sebelum laring (5), padahal laring (pangkal tenggorokan) berada di atas trakea.", "Opsi B (BENAR): Urutan lengkap Hidung (3) → Laring (5) → Trakea (4) → Bronkus (2) → Bronkiolus (6) → Alveolus (1).", "Opsi C (SALAH): Menempatkan bronkus sebelum trakea dan alveolus sebelum bronkiolus."], "tips": "Hafalkan jembatan keledai: 'Hi-Fa-La-Tra-Bron-Bronki-Al' (Hidung - Faring - Laring - Trakea - Bronkus - Bronkiolus - Alveolus)."}}, {"id": 12, "bagian": "I", "tipe": "pg", "teks": "Perhatikan gambar sistem pernapasan manusia berikut!\n\nNama organ pernapasan yang ditunjukkan oleh penanda huruf C dan E secara berurutan adalah...", "gambar": {"filename": "soal_12_sistem_pernapasan.png", "deskripsi": "Ilustrasi saluran pernapasan manusia dengan penanda huruf A (Rongga Hidung), B (Laring), C (Trakea), D (Bronkus), dan E (Alveolus)."}, "opsi": [{"id": "A", "teks": "Rongga hidung dan bronkus."}, {"id": "B", "teks": "Laring dan percabangan bronkiolus."}, {"id": "C", "teks": "Trakea (batang tenggorokan) dan alveolus."}, {"id": "D", "teks": "Otot diafragma dan rongga dada."}], "kunci": "C", "pembahasan": {"bab": "Bab 2 • Sistem Pernapasan Manusia", "topik": "Identifikasi Organ pada Gambar Pernapasan", "ringkasan_kunci": "C. Trakea (batang tenggorokan) dan alveolus.", "penjelasan": "Perhatikan penanda huruf pada gambar anatomi sistem pernapasan:\n• A = Rongga Hidung\n• B = Laring (pangkal tenggorokan)\n• C = Trakea (batang tenggorokan yang berbentuk pipa tegak bercincin tulang rawan)\n• D = Bronkus (percabangan menuju paru-paru kanan dan kiri)\n• E = Alveolus (gelembung-gelembung udara kecil menyerupai buah anggur di dalam paru-paru)", "analisis_opsi": ["Opsi A (SALAH): Rongga hidung ditunjukkan huruf A dan bronkus ditunjukkan huruf D.", "Opsi B (SALAH): Laring ditunjukkan huruf B.", "Opsi C (BENAR): C adalah Trakea dan E adalah Alveolus.", "Opsi D (SALAH): Diafragma adalah sekat otot di bawah paru-paru, bukan huruf C maupun E."], "tips": "Ciri gambar Trakea: pipa lurus bergaris-garis cincin. Ciri gambar Alveolus: gelembung bulat kecil seperti anggur."}}, {"id": 13, "bagian": "I", "tipe": "pg", "teks": "Suatu organ pernapasan terletak di dalam paru-paru, memiliki struktur menyerupai kantong-kantong udara kecil yang sangat tipis dan dilapisi oleh kapiler-kapiler darah. Fungsi utama organ ini adalah sebagai tempat terjadinya pertukaran gas oksigen dari udara dengan gas karbon dioksida dari darah.\n\nOrgan pernapasan manusia yang sesuai dengan deskripsi fungsi di atas adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Trakea"}, {"id": "B", "teks": "Bronkiolus"}, {"id": "C", "teks": "Alveolus"}, {"id": "D", "teks": "Laring"}], "kunci": "C", "pembahasan": {"bab": "Bab 2 • Sistem Pernapasan Manusia", "topik": "Fungsi Alveolus", "ringkasan_kunci": "C. Alveolus.", "penjelasan": "Alveolus adalah kantong-kantong udara berdinding sangat tipis (hanya setebal satu lapis sel) dan dikelilingi oleh jaringan pembuluh darah kapiler yang sangat rapat. Struktur tipis ini memungkinkan gas oksigen (O2) dari udara pernapasan berdifusi masuk ke dalam darah, sementara gas karbon dioksida (CO2) dari darah keluar menuju paru-paru untuk diembuskan.", "analisis_opsi": ["Opsi A (SALAH): Trakea adalah batang tenggorokan penghubung laring ke bronkus.", "Opsi B (SALAH): Bronkiolus adalah cabang kecil saluran udara menuju alveolus.", "Opsi C (BENAR): Alveolus adalah tempat pertukaran gas O2 dan CO2.", "Opsi D (SALAH): Laring adalah pangkal tenggorokan tempat pita suara berada."], "tips": "Setiap soal yang menyebut 'kantong udara tipis', 'kapiler darah', dan 'pertukaran gas O2 dan CO2', jawabannya pasti ALVEOLUS."}}, {"id": 14, "bagian": "I", "tipe": "pg", "teks": "Perhatikan tabel pasangan organ pernapasan dan fungsinya berikut!\n(1) Rongga Hidung → Menyaring kotoran dengan rambut hidung serta melembapkan udara.\n(2) Laring → Mengalirkan udara langsung menuju pembuluh darah arteri.\n(3) Trakea → Menyalurkan udara menuju paru-paru dengan dorongan silia penyaring.\n(4) Alveolus → Memompa udara keluar menuju saluran pencernaan makanan.\n\nPasangan organ pernapasan dan fungsinya yang tepat pada tabel di atas ditunjukkan oleh nomor...", "gambar": null, "opsi": [{"id": "A", "teks": "(1) dan (2)"}, {"id": "B", "teks": "(1) dan (3)"}, {"id": "C", "teks": "(2) dan (4)"}, {"id": "D", "teks": "(3) dan (4)"}], "kunci": "B", "pembahasan": {"bab": "Bab 2 • Sistem Pernapasan Manusia", "topik": "Pasangan Organ Pernapasan dan Fungsinya", "ringkasan_kunci": "B. (1) dan (3).", "penjelasan": "Evaluasi setiap pernyataan pada tabel:\n• (1) BENAR: Rongga hidung dilengkapi rambut hidung untuk menyaring debu kasar dan selaput lendir untuk melembapkan udara.\n• (2) SALAH: Laring berfungsi menyalurkan udara dari faring ke trakea serta menghasilkan suara melalui pita suara, bukan mengalirkan udara ke arteri.\n• (3) BENAR: Dinding trakea memiliki selaput lendir dan rambut getar (silia) yang menolak kotoran halus agar keluar melalui batuk/bersin.\n• (4) SALAH: Alveolus tempat pertukaran gas dengan darah, tidak ada hubungannya dengan saluran pencernaan.", "analisis_opsi": ["Opsi A, C, dan D (SALAH): Mengandung pernyataan (2) atau (4) yang keliru secara anatomi.", "Opsi B (BENAR): Pernyataan (1) dan (3) tepat."], "tips": "Di hidung ada rambut hidung (penyaring kasar); di trakea ada silia/rambut getar (penyaring halus)."}}, {"id": 15, "bagian": "I", "tipe": "pg", "teks": "Perhatikan pernyataan-pernyataan mengenai mekanisme pernapasan berikut:\n1. Otot diafragma mengalami relaksasi dan melengkung ke atas.\n2. Otot antartulang rusuk berkontraksi sehingga tulang rusuk terangkat.\n3. Volume rongga dada mengecil dan tekanan udara di dalam paru-paru meningkat.\n4. Udara kaya karbon dioksida terdorong keluar melalui saluran hidung.\n\nCiri-ciri mekanisme pernapasan pada saat proses mengembuskan napas (ekspirasi) ditunjukkan oleh nomor...", "gambar": null, "opsi": [{"id": "A", "teks": "1, 2, dan 3"}, {"id": "B", "teks": "1, 3, dan 4"}, {"id": "C", "teks": "2, 3, dan 4"}, {"id": "D", "teks": "1, 2, dan 4"}], "kunci": "B", "pembahasan": {"bab": "Bab 2 • Mekanisme Pernapasan", "topik": "Ciri Proses Ekspirasi (Mengembuskan Napas)", "ringkasan_kunci": "B. 1, 3, dan 4.", "penjelasan": "Proses mengembuskan napas (ekspirasi) terjadi ketika otot-otot pernapasan mengendur (relaksasi):\n• Pernyataan 1 (BENAR): Otot diafragma relaksasi sehingga kembali melengkung ke atas mendesak rongga dada.\n• Pernyataan 2 (SALAH): Otot antartulang rusuk berkontraksi dan tulang rusuk terangkat terjadi saat menarik napas (inspirasi).\n• Pernyataan 3 (BENAR): Karena diafragma melengkung ke atas dan tulang rusuk turun, volume rongga dada mengecil sehingga tekanan udara di dalam paru-paru meningkat (lebih besar daripada tekanan udara luar).\n• Pernyataan 4 (BENAR): Udara kaya karbon dioksida terdorong mengalir keluar dari tekanan tinggi (paru-paru) ke tekanan rendah (udara luar).", "analisis_opsi": ["Opsi A & D (SALAH): Memasukkan nomor 2 yang merupakan ciri inspirasi.", "Opsi B (BENAR): Nomor 1, 3, dan 4 adalah urutan tepat proses ekspirasi.", "Opsi C (SALAH): Memasukkan nomor 2."], "tips": "Ingat hukum fisika udara: Udara selalu mengalir dari TEKANAN TINGGI ke TEKANAN RENDAH."}}, {"id": 16, "bagian": "I", "tipe": "pg", "teks": "Pada saat seseorang melakukan aktivitas menarik napas dalam-dalam (inspirasi), terjadi proses kontraksi pada otot-otot antartulang rusuk dan otot diafragma mendatar. Peristiwa kontraksi tersebut memberikan akibat terhadap perubahan rongga dada dan aliran udara, yaitu...", "gambar": null, "opsi": [{"id": "A", "teks": "Volume rongga dada membesar, tekanan udara paru-paru mengecil, sehingga udara luar masuk ke paru-paru."}, {"id": "B", "teks": "Volume rongga dada mengecil, tekanan udara paru-paru membesar, sehingga udara terdorong keluar tubuh."}, {"id": "C", "teks": "Volume rongga dada tetap, tekanan udara paru-paru membesar, sehingga udara berhenti mengalir di hidung."}, {"id": "D", "teks": "Volume rongga dada mengecil, tekanan udara paru-paru mengecil, sehingga gas karbon dioksida diserap darah."}], "kunci": "A", "pembahasan": {"bab": "Bab 2 • Mekanisme Pernapasan", "topik": "Mekanisme Inspirasi (Menarik Napas)", "ringkasan_kunci": "A. Volume rongga dada membesar, tekanan udara paru-paru mengecil, sehingga udara luar masuk ke paru-paru.", "penjelasan": "Saat kita menarik napas (inspirasi):\n1. Otot antartulang rusuk berkontraksi → tulang rusuk terangkat ke atas dan ke luar.\n2. Otot diafragma berkontraksi → posisi diafragma yang semula melengkung berubah menjadi mendatar.\n3. Akibatnya, ruangan (volume) rongga dada dan paru-paru membesar.\n4. Karena ruang membesar, tekanan udara di dalam paru-paru menjadi lebih kecil daripada tekanan udara di luar tubuh.\n5. Udara segar kaya oksigen pun mengalir masuk ke dalam paru-paru.", "analisis_opsi": ["Opsi A (BENAR): Menjelaskan hubungan volume membesar → tekanan mengecil → udara masuk dengan tepat.", "Opsi B (SALAH): Volume mengecil dan tekanan membesar terjadi saat ekspirasi (mengembuskan napas).", "Opsi C & D (SALAH): Bertentangan dengan prinsip perubahan volume dan tekanan udara saat inspirasi."], "tips": "Inspirasi = IN (Masuk): Kontraksi → Dada Membesar → Tekanan Mengecil → Udara Masuk."}}, {"id": 17, "bagian": "I", "tipe": "pg", "teks": "Ian sering mengalami batuk berdahak yang berlangsung lebih dari 3 minggu, merasa nyeri di bagian dada saat bernapas, badan sering demam di malam hari, dan berat badannya terus menurun. Setelah diperiksa dokter, ternyata paru-parunya terinfeksi oleh bakteri Mycobacterium tuberculosis.\n\nBerdasarkan gejala dan penyebab tersebut, gangguan pernapasan yang dialami oleh Ian adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Asma"}, {"id": "B", "teks": "Tuberkulosis (TBC)"}, {"id": "C", "teks": "Influenza"}, {"id": "D", "teks": "Emfisema"}], "kunci": "B", "pembahasan": {"bab": "Bab 2 • Gangguan Sistem Pernapasan", "topik": "Tuberkulosis (TBC)", "ringkasan_kunci": "B. Tuberkulosis (TBC).", "penjelasan": "Tuberkulosis (TBC) adalah penyakit menular pada paru-paru yang disebabkan oleh infeksi bakteri Mycobacterium tuberculosis. Bakteri ini menimbulkan bintil-bintil (tuberkel) pada dinding alveolus. Gejala khasnya adalah batuk berdahak (kadang berdarah) lebih dari 2–3 minggu, nyeri dada, demam dan berkeringat di malam hari, serta berat badan turun drastis.", "analisis_opsi": ["Opsi A (SALAH): Asma disebabkan penyempitan saluran napas akibat alergi (dingin, debu, bulu), bukan infeksi bakteri TBC.", "Opsi B (BENAR): Sesuai dengan penyebab bakteri Mycobacterium tuberculosis dan gejalanya.", "Opsi C (SALAH): Influenza disebabkan infeksi virus influenza dengan gejala demam, pilek, bersin, dan sakit tenggorokan jangka pendek.", "Opsi D (SALAH): Emfisema adalah kerusakan kantong alveolus akibat paparan asap rokok jangka panjang."], "tips": "Kata kunci soal: Bakteri Mycobacterium tuberculosis + batuk >3 minggu + keringat malam = TBC."}}, {"id": 18, "bagian": "I", "tipe": "pg", "teks": "Perhatikan deskripsi gangguan pernapasan berikut!\nGangguan pernapasan ini ditandai dengan peradangan dan penyempitan pada saluran pernapasan akibat reaksi berlebihan terhadap pemicu lingkungan seperti udara dingin, debu, atau bulu hewan. Penderita biasanya mengalami sesak napas disertai suara mengi (wheezing) saat mengembuskan napas.\n\nJenis gangguan pernapasan yang paling tepat sesuai deskripsi di atas adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Asma"}, {"id": "B", "teks": "Pneumonia"}, {"id": "C", "teks": "Kanker paru-paru"}, {"id": "D", "teks": "Influenza"}], "kunci": "A", "pembahasan": {"bab": "Bab 2 • Gangguan Sistem Pernapasan", "topik": "Penyakit Asma", "ringkasan_kunci": "A. Asma.", "penjelasan": "Asma merupakan gangguan pernapasan kronis berupa peradangan dan penyempitan saluran napas (bronkus dan bronkiolus) disertai peningkatan produksi lendir ketika saluran napas terpapar pemicu alergi (alergen) seperti udara dingin, debu rumah, asap rokok, atau bulu hewan. Ciri utamanya adalah dada terasa sesak dan terdengar bunyi napas melengking/mengi (wheezing).", "analisis_opsi": ["Opsi A (BENAR): Penyempitan saluran napas akibat alergi dengan suara mengi adalah ciri khas Asma.", "Opsi B (SALAH): Pneumonia adalah radang paru-paru akibat infeksi kuman sehingga alveolus terisi cairan/nanah.", "Opsi C (SALAH): Kanker paru-paru adalah pertumbuhan sel ganas tidak terkendali pada jaringan paru.", "Opsi D (SALAH): Influenza adalah infeksi virus pada saluran pernapasan atas."], "tips": "Kata kunci: Alergi dingin/debu + penyempitan saluran napas + suara mengi (wheezing) = ASMA."}}, {"id": 19, "bagian": "I", "tipe": "pg", "teks": "Wilayah tempat tinggal Edo terletak di dekat daerah kawasan industri pabrik dan jalan raya utama yang padat kendaraan bermotor. Kondisi udara di lingkungan tersebut sering kali dipenuhi asap dan debu polutan.\n\nDi antara usulan tindakan berikut, penilaian terhadap tindakan yang paling efektif dan tepat dilakukan Edo untuk menjaga kesehatan sistem pernapasannya adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Tetap berolahraga lari maraton di pinggir jalan raya saat jam sibuk lalu lintas tanpa masker."}, {"id": "B", "teks": "Menggunakan masker yang tepat saat beraktivitas di luar rumah dan menanam pohon hijau di sekitar rumah."}, {"id": "C", "teks": "Membuka seluruh jendela rumah lebar-lebar sepanjang hari agar asap pabrik masuk menyejukkan ruangan."}, {"id": "D", "teks": "Mengonsumsi obat batuk setiap hari sebagai langkah antisipasi tanpa perlu menghindari polusi udara."}], "kunci": "B", "pembahasan": {"bab": "Bab 2 • Menjaga Kesehatan Pernapasan", "topik": "Perlindungan Diri di Lingkungan Berpolusi", "ringkasan_kunci": "B. Menggunakan masker yang tepat saat beraktivitas di luar rumah dan menanam pohon hijau di sekitar rumah.", "penjelasan": "Asap pabrik dan kendaraan bermotor mengandung gas beracun (CO, NO2, SO2) serta partikel debu halus (PM2.5) yang dapat merusak jaringan paru-paru. Langkah perlindungan paling efektif adalah:\n1. Perlindungan langsung: Memakai masker saat berada di luar ruangan untuk menyaring partikel debu dan polutan.\n2. Perbaikan kualitas udara sekitar: Menanam tumbuhan hijau di halaman rumah karena daun tumbuhan menyerap karbon dioksida serta menghasilkan oksigen segar.", "analisis_opsi": ["Opsi A (SALAH): Berolahraga berat di pinggir jalan padat tanpa masker justru membuat kita menghirup polusi jauh lebih banyak.", "Opsi B (BENAR): Kombinasi memakai masker dan penghijauan lingkungan sangat efektif melindungi sistem pernapasan.", "Opsi C (SALAH): Membuka jendela saat asap pabrik pekat akan mencemari udara di dalam rumah.", "Opsi D (SALAH): Obat batuk hanya meredakan gejala, tidak mencegah kerusakan paru akibat polusi."], "tips": "Selalu pilih tindakan yang bersifat pencegahan (preventif) dan ramah lingkungan!"}}, {"id": 20, "bagian": "I", "tipe": "pg", "teks": "Bangsa Belanda pertama kali mendarat di pelabuhan Banten pada tahun 1596 di bawah pimpinan Cornelis de Houtman. Pernyataan yang paling tepat mengenai tujuan utama awal kedatangan bangsa Belanda ke wilayah Nusantara adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Menyebarkan agama dan membangun pusat-pusat pendidikan tinggi bagi warga pribumi."}, {"id": "B", "teks": "Mencari dan menguasai perdagangan rempah-rempah langsung dari sumbernya di Kepulauan Nusantara."}, {"id": "C", "teks": "Membantu kerajaan-kerajaan lokal di Indonesia untuk membangun angkatan laut yang kuat."}, {"id": "D", "teks": "Mengajarkan teknologi pertanian modern dan sistem irigasi canggih kepada petani tradisional."}], "kunci": "B", "pembahasan": {"bab": "Bab 3 • Sejarah Penjajahan di Nusantara", "topik": "Tujuan Awal Kedatangan Bangsa Belanda", "ringkasan_kunci": "B. Mencari dan menguasai perdagangan rempah-rempah langsung dari sumbernya di Kepulauan Nusantara.", "penjelasan": "Pada akhir abad ke-16, pelabuhan Lisboa (Portugal) ditutup bagi pedagang Belanda sehingga Belanda kesulitan memperoleh rempah-rempah di Eropa. Oleh karena itu, pada tahun 1596 ekspedisi Belanda dipimpin Cornelis de Houtman mendarat di Banten dengan tujuan utama mencari dan menguasai langsung sumber perdagangan rempah-rempah (lada, pala, cengkih) di Kepulauan Nusantara.", "analisis_opsi": ["Opsi A, C, dan D (SALAH): Bangsa Eropa datang bukan untuk membantu rakyat pribumi atau membangun pendidikan tinggi, melainkan untuk kepentingan ekonomi dan monopoli dagang (semboyan 3G: Gold, Glory, Gospel).", "Opsi B (BENAR): Mencari dan menguasai perdagangan rempah-rempah adalah motif ekonomi utama (Gold)."], "tips": "Ingat semboyan 3G kedatangan bangsa Eropa: Gold (kekayaan/rempah-rempah), Glory (kejayaan), Gospel (penyebaran agama)."}}, {"id": 21, "bagian": "I", "tipe": "pg", "teks": "Pada tahun 1830, Gubernur Jenderal Johannes van den Bosch memberlakukan suatu kebijakan kolonial di Indonesia. Kebijakan ini mewajibkan rakyat pribumi menanam tanaman ekspor seperti kopi, teh, tebu, dan nila di sebagian tanah pertanian mereka untuk diserahkan kepada pemerintah Belanda.\n\nNama kebijakan kolonial yang dimaksud dalam deskripsi di atas adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Politik Etis (Politik Balas Budi)"}, {"id": "B", "teks": "Cultuurstelsel (Sistem Tanam Paksa)"}, {"id": "C", "teks": "Verplichte Leverantie (Penyerahan Wajib)"}, {"id": "D", "teks": "Agrarische Wet (Undang-Undang Agraria)"}], "kunci": "B", "pembahasan": {"bab": "Bab 3 • Kebijakan Kolonial Belanda", "topik": "Cultuurstelsel (Sistem Tanam Paksa)", "ringkasan_kunci": "B. Cultuurstelsel (Sistem Tanam Paksa).", "penjelasan": "Pada tahun 1830, Gubernur Jenderal Johannes van den Bosch menerapkan kebijakan Cultuurstelsel (Sistem Tanam Paksa) untuk mengisi kas kerajaan Belanda yang kosong akibat Perang Jawa (Perang Diponegoro). Melalui aturan ini, rakyat diwajibkan menanam tanaman komoditas ekspor yang laku di pasar Eropa (seperti kopi, teh, tebu, nila/tarum, dan tembakau) untuk diserahkan kepada pemerintah kolonial.", "analisis_opsi": ["Opsi A (SALAH): Politik Etis (1901) adalah politik balas budi (irigasi, edukasi, emigrasi) yang muncul jauh setelah Tanam Paksa dihapus.", "Opsi B (BENAR): Cultuurstelsel dicetuskan oleh Johannes van den Bosch pada tahun 1830.", "Opsi C (SALAH): Verplichte Leverantie adalah penyerahan wajib hasil bumi oleh raja-raja lokal pada masa VOC.", "Opsi D (SALAH): Agrarische Wet (1870) adalah undang-undang pertanahan pada masa pintu terbuka (liberal)."], "tips": "Tahun 1830 + Johannes van den Bosch + wajib menanam kopi/tebu/nila = Cultuurstelsel (Tanam Paksa)."}}, {"id": 22, "bagian": "I", "tipe": "pg", "teks": "Pelaksanaan sistem Tanam Paksa (Cultuurstelsel) mengalami banyak penyimpangan di lapangan yang dilakukan oleh pejabat kolonial dan penguasa lokal. Dampak sangat berat yang dirasakan oleh rakyat pribumi akibat pelaksanaan Tanam Paksa tersebut adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Kesejahteraan rakyat meningkat drastis karena mendapat bagian keuntungan dari penjualan rempah ekspor."}, {"id": "B", "teks": "Bencana kelaparan, kemiskinan parah, dan kematian di berbagai daerah karena lahan padi terabaikan."}, {"id": "C", "teks": "Seluruh anak-anak petani pribumi diperbolehkan bersekolah hingga ke jenjang perguruan tinggi di Eropa."}, {"id": "D", "teks": "Kebebasan rakyat untuk memproduksi barang-barang dagangan sendiri secara mandiri tanpa pajak."}], "kunci": "B", "pembahasan": {"bab": "Bab 3 • Kebijakan Kolonial Belanda", "topik": "Dampak Sistem Tanam Paksa bagi Rakyat", "ringkasan_kunci": "B. Bencana kelaparan, kemiskinan parah, dan kematian di berbagai daerah karena lahan padi terabaikan.", "penjelasan": "Dalam pelaksanaannya, para pejabat kolonial maupun penguasa lokal melakukan banyak penyimpangan demi mengejar bonus hasil panen (cultuurprocenten). Petani dipaksa menyerahkan hingga separuh atau seluruh tanah suburnya untuk tebu dan nila serta bekerja terus-menerus di perkebunan Belanda. Akibatnya, sawah padi tidak terurus dan timbullah bencana kelaparan serta kematian massal, seperti di Cirebon, Demak, dan Grobogan.", "analisis_opsi": ["Opsi A, C, dan D (SALAH): Bertentangan dengan fakta sejarah; keuntungan besar hanya dinikmati pemerintah Belanda, sedangkan rakyat pribumi menderita.", "Opsi B (BENAR): Kelaparan, kemiskinan, dan tingginya angka kematian adalah dampak nyata penderitaan rakyat akibat Tanam Paksa."], "tips": "Tanam Paksa memperkaya kas Belanda, tetapi membuat petani Indonesia kelaparan karena sawah padinya terlantar."}}, {"id": 23, "bagian": "I", "tipe": "pg", "teks": "Pattimura memimpin perlawanan rakyat Maluku melawan penjajahan Belanda pada tahun 1817. Beliau berjuang gigih menolak monopoli perdagangan rempah yang menyengsarakan rakyat serta berhasil menyatukan kerajaan-kerajaan di Maluku untuk bersama-sama melawan ketidakadilan.\n\nNilai kepahlawanan utama yang tercermin dari perjuangan Pattimura tersebut adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Keberanian membela kebenaran, persatuan menghadapi penindasan, dan pantang menyerah."}, {"id": "B", "teks": "Kepatuhan tanpa syarat terhadap peraturan kolonial demi menjaga kedamaian daerah."}, {"id": "C", "teks": "Keinginan untuk memperoleh kekayaan pribadi dan gelar kehormatan dari pemerintah penjajah."}, {"id": "D", "teks": "Sikap acuh tak acuh terhadap penderitaan sesama rakyat di wilayah kerajaan tetangga."}], "kunci": "A", "pembahasan": {"bab": "Bab 3 • Perlawanan Daerah Melawan Penjajah", "topik": "Nilai Kepahlawanan Kapitan Pattimura", "ringkasan_kunci": "A. Keberanian membela kebenaran, persatuan menghadapi penindasan, dan pantang menyerah.", "penjelasan": "Thomas Matulessy (Kapitan Pattimura) memimpin rakyat Maluku pada tahun 1817 untuk merebut Benteng Duurstede di Saparua sebagai bentuk perlawanan terhadap monopoli perdagangan rempah dan kerja paksa yang menindas rakyat. Dari kisah perjuangannya, kita dapat meneladani keberanian membela kebenaran, kemampuan mempersatukan masyarakat melawan penindasan, dan semangat pantang menyerah hingga akhir.", "analisis_opsi": ["Opsi A (BENAR): Merangkum nilai luhur kepahlawanan Pattimura dengan tepat.", "Opsi B, C, dan D (SALAH): Merupakan sikap negatif yang bertentangan dengan jiwa patriotisme para pahlawan."], "tips": "Perjuangan Pattimura terjadi di Maluku (Saparua) tahun 1817 dengan nilai utama: persatuan, keberanian, dan pantang menyerah."}}, {"id": 24, "bagian": "I", "tipe": "pg", "teks": "Perhatikan tabel nama tokoh pahlawan dan jasanya berikut!\n1. Ki Hajar Dewantara → Mendirikan sekolah Taman Siswa untuk memperjuangkan hak pendidikan rakyat pribumi.\n2. dr. Cipto Mangunkusumo → Mengobati masyarakat penderita wabah pes dan aktif dalam pergerakan politik nasional.\n3. Moh. Hatta → Memimpin Perang Banjar dan menyatukan suku-suku Dayak melawan Belanda.\n4. Pangeran Antasari → Menjadi Proklamator Kemerdekaan Indonesia dan dikenal sebagai Bapak Koperasi Indonesia.\n\nPasangan antara nama tokoh pahlawan dan jasa perjuangannya yang paling tepat pada tabel di atas ditunjukkan oleh nomor...", "gambar": null, "opsi": [{"id": "A", "teks": "1 dan 2"}, {"id": "B", "teks": "1 dan 3"}, {"id": "C", "teks": "2 dan 4"}, {"id": "D", "teks": "3 dan 4"}], "kunci": "A", "pembahasan": {"bab": "Bab 3 • Tokoh Pahlawan Nasional", "topik": "Pasangan Tokoh Pahlawan dan Jasa Perjuangannya", "ringkasan_kunci": "A. 1 dan 2.", "penjelasan": "Mari kita periksa kesesuaian nama tokoh dan jasanya pada tabel:\n• Nomor 1 (BENAR): Ki Hajar Dewantara mendirikan Perguruan Taman Siswa pada 3 Juli 1922 di Yogyakarta untuk memberikan hak pendidikan bagi rakyat pribumi.\n• Nomor 2 (BENAR): dr. Cipto Mangunkusumo adalah dokter lulusan STOVIA yang turun langsung merawat pasien wabah pes di Malang serta aktif berjuang lewat organisasi pergerakan politik (Indische Partij).\n• Nomor 3 & 4 (SALAH / TERTUKAR): Moh. Hatta adalah Proklamator Kemerdekaan dan Bapak Koperasi Indonesia, sedangkan Pangeran Antasari adalah pemimpin Perang Banjar di Kalimantan Selatan.", "analisis_opsi": ["Opsi A (BENAR): Nomor 1 dan 2 tepat.", "Opsi B, C, dan D (SALAH): Memuat nomor 3 atau 4 yang jasanya tertukar."], "tips": "Ki Hajar Dewantara = Taman Siswa (Bapak Pendidikan Nasional); Pangeran Antasari = Perang Banjar; Moh. Hatta = Proklamator & Bapak Koperasi."}}, {"id": 25, "bagian": "I", "tipe": "pg", "teks": "Perhatikan gambar dan deskripsi tokoh berikut!\n\nTokoh ini adalah seorang dokter pribumi lulusan STOVIA yang dengan berani terjun langsung ke daerah Malang untuk menanggulangi wabah penyakit pes yang sangat menular. Beliau tidak memungut biaya dari rakyat miskin dan memanfaatkan keahlian medisnya serta perjuangan politiknya untuk membela rakyat kecil dari penjajahan.\n\nTokoh pahlawan nasional yang dimaksud dalam deskripsi di atas adalah...", "gambar": {"filename": "soal_25_tokoh_dokter_stovia.png", "deskripsi": "Ilustrasi tokoh dokter pejuang Jawa lulusan STOVIA berpakaian sederhana membawa tas medis."}, "opsi": [{"id": "A", "teks": "dr. Cipto Mangunkusumo"}, {"id": "B", "teks": "dr. Soetomo"}, {"id": "C", "teks": "dr. Wahidin Soedirohusodo"}, {"id": "D", "teks": "Dr. Mohammad Hatta"}], "kunci": "A", "pembahasan": {"bab": "Bab 3 • Tokoh Pahlawan Nasional", "topik": "Perjuangan dr. Cipto Mangunkusumo", "ringkasan_kunci": "A. dr. Cipto Mangunkusumo.", "penjelasan": "dr. Cipto Mangunkusumo merupakan dokter pribumi lulusan sekolah kedokteran STOVIA. Ketika wabah penyakit pes (sampar) yang mematikan melanda Malang, Jawa Timur, beliau dengan sukarela dan berani turun langsung mengobati masyarakat miskin tanpa memungut bayaran. Selain di bidang medis, beliau bersama Douwes Dekker dan Ki Hajar Dewantara mendirikan Indische Partij (Tiga Serangkai).", "analisis_opsi": ["Opsi A (BENAR): Tokoh dokter pejuang wabah pes di Malang dan anggota Tiga Serangkai.", "Opsi B (SALAH): dr. Soetomo adalah pendiri organisasi Budi Utomo (20 Mei 1908).", "Opsi C (SALAH): dr. Wahidin Soedirohusodo adalah penggagas dana pelajar (studiefonds) dan inspirator berdirinya Budi Utomo.", "Opsi D (SALAH): Dr. Mohammad Hatta adalah tokoh proklamator dan ahli ekonomi/koperasi."], "tips": "Kata kunci: Dokter lulusan STOVIA + memberantas wabah pes di Malang secara gratis + Tiga Serangkai = dr. Cipto Mangunkusumo."}}, {"id": 26, "bagian": "I", "tipe": "pg", "teks": "Sam Ratulangi merupakan pahlawan nasional dari Sulawesi Utara. Beliau merupakan anggota PPKI yang secara aktif ikut serta memperjuangkan dan mempertahankan kemerdekaan Indonesia di forum politik nasional dan internasional, serta membantu menyebarkan berita Proklamasi Kemerdekaan ke seluruh wilayah Sulawesi.\n\nFokus utama bidang perjuangan Sam Ratulangi dalam mempertahankan kemerdekaan Indonesia adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Perjuangan persenjataan militer di gerilya hutan."}, {"id": "B", "teks": "Perjuangan politik, pendidikan, dan diplomasi antarwilayah."}, {"id": "C", "teks": "Perjuangan monopoli perdagangan rempah-rempah pasar internasional."}, {"id": "D", "teks": "Perjuangan pembangunan sarana jalan raya dan benteng pertahanan."}], "kunci": "B", "pembahasan": {"bab": "Bab 3 • Tokoh Pahlawan Nasional", "topik": "Perjuangan Dr. G.S.S.J. Sam Ratulangi", "ringkasan_kunci": "B. Perjuangan politik, pendidikan, dan diplomasi antarwilayah.", "penjelasan": "Dr. Gerungan Saul Samuel Jacob (Sam) Ratulangi adalah pahlawan nasional asal Minahasa, Sulawesi Utara. Sebagai anggota PPKI dan Gubernur pertama Sulawesi, beliau berjuang melalui jalur politik, pendidikan, dan diplomasi untuk menyebarluaskan berita Proklamasi Kemerdekaan 17 Agustus 1945 serta menggalang dukungan rakyat Sulawesi agar tetap bersatu dalam Negara Kesatuan Republik Indonesia.", "analisis_opsi": ["Opsi A (SALAH): Sam Ratulangi bukan panglima perang gerilya bersenjata di hutan, melainkan tokoh cendekiawan, pendidik, dan diplomat.", "Opsi B (BENAR): Tepat menggambarkan jalur perjuangan politik, pendidikan, dan diplomasi Sam Ratulangi.", "Opsi C & D (SALAH): Tidak sesuai dengan peran sejarah Sam Ratulangi."], "tips": "Sam Ratulangi terkenal dengan semboyan kemanusiaannya: 'Si Tou Timou Tumou Tou' (Manusia baru dapat disebut manusia jika sudah dapat memanusiakan manusia lain)."}}, {"id": 27, "bagian": "I", "tipe": "pg", "teks": "Pemerintah Indonesia sering kali mengabadikan nama tokoh-tokoh pahlawan nasional sebagai nama jalan utama, bandara, atau gedung publik di berbagai kota. Alasan utama tindakan ini dilakukan sebagai bentuk penghargaan adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Agar nama pahlawan tidak lupa ditulis pada kuis-kuis perlombaan sekolah."}, {"id": "B", "teks": "Mengenangkan jasa pahlawan serta menginspirasi generasi muda untuk meneladani nilai perjuangannya."}, {"id": "C", "teks": "Menjadikan nama jalan sebagai syarat utama untuk menarik wisatawan asing berkunjung."}, {"id": "D", "teks": "Memenuhi formalitas peraturan tata kota tanpa ada makna nilai kepahlawanan."}], "kunci": "B", "pembahasan": {"bab": "Bab 3 • Menghargai Jasa Pahlawan", "topik": "Makna Pengabadian Nama Pahlawan", "ringkasan_kunci": "B. Mengenangkan jasa pahlawan serta menginspirasi generasi muda untuk meneladani nilai perjuangannya.", "penjelasan": "Penggunaan nama tokoh pahlawan pada jalan protokol, bandara (contoh: Bandara Sam Ratulangi, Bandara Pattimura), atau gedung publik merupakan bentuk penghormatan negara. Tujuannya agar masyarakat dan generasi penerus senantiasa mengenang pengorbanan para pahlawan serta terinspirasi untuk meneruskan semangat cinta tanah air mereka.", "analisis_opsi": ["Opsi A, C, dan D (SALAH): Merupakan alasan yang dangkal dan tidak mencerminkan nilai kebangsaan.", "Opsi B (BENAR): Menjelaskan tujuan luhur pelestarian ingatan sejarah dan keteladanan pahlawan."], "tips": "Ingat pesan Bung Karno: 'Jasmerah — Jangan sekali-kali meninggalkan sejarah!'"}}, {"id": 28, "bagian": "I", "tipe": "pg", "teks": "Sebagai generasi muda di masa kemerdekaan saat ini, kita tidak lagi mengangkat senjata di medan perang. Di antara pilihan tindakan berikut, sikap yang paling mencerminkan penghargaan nyata terhadap jasa dan nilai-nilai perjuangan para pahlawan dalam kehidupan sehari-hari adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Belajar dengan tekun, menghormati perbedaan suku/agama, dan berkarya positif bagi bangsa."}, {"id": "B", "teks": "Menggunakan seluruh waktu luang untuk bermain gim online tanpa peduli lingkungan sekitar."}, {"id": "C", "teks": "Menyalahkan kondisi bangsa tanpa mau berusaha melakukan perbaikan diri."}, {"id": "D", "teks": "Meniru gaya hidup asing yang bertentangan dengan nilai-nilai budaya dan Pancasila."}], "kunci": "A", "pembahasan": {"bab": "Bab 3 • Menghargai Jasa Pahlawan", "topik": "Sikap Meneladani Pahlawan di Masa Kemerdekaan", "ringkasan_kunci": "A. Belajar dengan tekun, menghormati perbedaan suku/agama, dan berkarya positif bagi bangsa.", "penjelasan": "Di masa kemerdekaan saat ini, tugas utama seorang pelajar dalam mengisi kemerdekaan dan menghargai jasa pahlawan adalah belajar dengan sungguh-sungguh, menjaga kerukunan dan toleransi antarsesama warga negara yang beragam, menaati tata tertib, serta berprestasi untuk mengharumkan nama bangsa.", "analisis_opsi": ["Opsi A (BENAR): Wujud nyata pengamalan nilai perjuangan bagi pelajar masa kini.", "Opsi B, C, dan D (SALAH): Merupakan sikap malas, apatis, dan tidak cinta tanah air."], "tips": "Perjuangan pelajar masa kini bukan mengangkat bambu runcing, melainkan berjuang melawan kebodohan dan perpecahan."}}, {"id": 29, "bagian": "I", "tipe": "pg", "teks": "Kelompok siswa Kelas VI mendapat tugas menyusun profil pahlawan daerah setempat. Tujuan profil tersebut adalah agar pembaca dapat memahami riwayat hidup, bentuk perjuangan, serta mengambil teladan sikap kepahlawanan tokoh secara utuh dan menarik.\n\nDi antara opsi rancangan berikut, pilihan rancangan profil pahlawan yang paling sesuai dengan tujuan tersebut adalah...", "gambar": null, "opsi": [{"id": "A", "teks": "Hanya menampilkan foto pahlawan berukuran besar tanpa menuliskan teks riwayat perjuangan."}, {"id": "B", "teks": "Menyusun naskah biografi runtut (identitas, latar belakang, bentuk perjuangan, dan nilai keteladanan) dilengkapi ilustrasi pendukung yang rapi."}, {"id": "C", "teks": "Menuliskan daftar nama-nama pahlawan dari daerah lain tanpa membahas tokoh daerah setempat secara mendalam."}, {"id": "D", "teks": "Membuat laporan singkat yang berisi silsilah keluarga tokoh tanpa menyebutkan peran perlawanannya terhadap penjajah."}], "kunci": "B", "pembahasan": {"bab": "Bab 3 • Proyek Profil Pahlawan Daerah", "topik": "Merancang Profil Pahlawan yang Sistematis", "ringkasan_kunci": "B. Menyusun naskah biografi runtut (identitas, latar belakang, bentuk perjuangan, dan nilai keteladanan) dilengkapi ilustrasi pendukung yang rapi.", "penjelasan": "Agar pembaca dapat memahami kisah hidup tokoh pahlawan secara utuh dan mengambil teladannya, penyusunan profil pahlawan harus memuat informasi biografi yang lengkap dan runtut (identitas diri, asal daerah, latar belakang perjuangan, peran melawan penjajah, serta nilai keteladanan yang bisa ditiru) disertai tampilan visual/ilustrasi yang menarik.", "analisis_opsi": ["Opsi A (SALAH): Foto saja tanpa tulisan tidak menjelaskan riwayat maupun nilai perjuangan tokoh.", "Opsi B (BENAR): Memenuhi seluruh tujuan penyusunan profil pahlawan daerah secara informatif dan menarik.", "Opsi C (SALAH): Tidak sesuai dengan tugas karena membahas pahlawan dari daerah lain.", "Opsi D (SALAH): Silsilah keluarga tanpa cerita perjuangan tidak menggambarkan kepahlawanan tokoh."], "tips": "Profil pahlawan yang baik selalu mencakup: Identitas + Perjuangan + Nilai Keteladanan."}}, {"id": 30, "bagian": "II", "tipe": "pgk_bs", "teks": "Perhatikan kartu informasi organ dan enzim pencernaan pada gambar berikut!\n\nBerdasarkan kartu informasi di atas, tentukan apakah pernyataan-pernyataan berikut BENAR atau SALAH!", "gambar": {"filename": "soal_30_kartu_enzim.png", "deskripsi": "Kartu Informasi Pencernaan Kimiawi pada Organ Lambung (HCl & Pepsin) dan Usus Halus (Amilase, Lipase, Trypsin)."}, "pernyataan": [{"id": "a", "teks": "Asam klorida (HCl) di dalam lambung berfungsi menciptakan suasana asam untuk membunuh bakteri pada makanan.", "kunci": "Benar"}, {"id": "b", "teks": "Enzim pepsin di dalam lambung berfungsi menguraikan lemak menjadi asam lemak dan gliserol.", "kunci": "Salah"}, {"id": "c", "teks": "Usus halus menerima pasokan enzim dari pankreas untuk memecah protein, lemak, dan karbohidrat.", "kunci": "Benar"}, {"id": "d", "teks": "Pencernaan kimiawi di dalam mulut dibantu oleh enzim tripsin yang memecah protein menjadi asam amino.", "kunci": "Salah"}], "pembahasan": {"bab": "Bab 1 • Pencernaan Kimiawi (PGK Benar/Salah)", "topik": "Peran Enzim pada Lambung dan Usus Halus", "ringkasan_kunci": "a. BENAR  |  b. SALAH  |  c. BENAR  |  d. SALAH", "penjelasan": "Pembahasan setiap pernyataan berdasarkan kartu informasi enzim pencernaan:\n• Pernyataan a — BENAR: Asam klorida (HCl) pada lambung membuat lingkungan lambung sangat asam (pH ±1,5–3) sehingga mampu membunuh kuman/bakteri yang terbawa makanan dan mengaktifkan enzim pepsin.\n• Pernyataan b — SALAH: Enzim pepsin di lambung berfungsi memecah PROTEIN menjadi pepton. Enzim yang memecah lemak menjadi asam lemak dan gliserol adalah enzim LIPASE.\n• Pernyataan c — BENAR: Usus halus menerima getah pankreas yang mengandung enzim Amilase (karbohidrat), Tripsin (protein), dan Lipase (lemak).\n• Pernyataan d — SALAH: Pencernaan kimiawi di dalam mulut dibantu oleh enzim AMILASE (PTIALIN) untuk memecah karbohidrat, bukan tripsin.", "analisis_opsi": ["a. Benar → HCl membunuh kuman di lambung.", "b. Salah → Pepsin untuk Protein; Lipase untuk Lemak.", "c. Benar → Pankreas menyalurkan amilase, tripsin, dan lipase ke usus halus.", "d. Salah → Di mulut terdapat enzim amilase/ptialin, bukan tripsin."], "tips": "Ingat pasangan huruf depan: Pepsin = Protein | Lipase = Lemak | Amilase = Amilum (Karbohidrat)."}}, {"id": 31, "bagian": "II", "tipe": "pgk_bs", "teks": "Bacalah teks berikut dengan cermat!\n\nDampak Kebakaran Hutan terhadap Kesehatan Pernapasan\nKebakaran hutan dan lahan (karhutla) menghasilkan kabut asap pekat yang mengandung gas beracun seperti karbon monoksida (CO), sulfur dioksida (SO2), dan partikel debu halus (PM2.5). Partikel debu yang sangat kecil ini dapat menembus bulu hidung dan masuk hingga ke dalam alveolus di paru-paru. Paparan kabut asap secara terus-menerus dapat menyebabkan penderita asma mengalami kambuh hebat, serta memicu timbulnya Infeksi Saluran Pernapasan Akut (ISPA) pada masyarakat.\n\nBerdasarkan bacaan di atas, tentukan apakah pernyataan-pernyataan berikut BENAR atau SALAH!", "gambar": null, "pernyataan": [{"id": "a", "teks": "Partikel halus PM2.5 dari kabut asap karhutla mampu menembus bulu hidung hingga mencapai alveolus.", "kunci": "Benar"}, {"id": "b", "teks": "Kabut asap akibat kebakaran hutan kaya akan oksigen murni yang aman bagi penderita asma.", "kunci": "Salah"}, {"id": "c", "teks": "Infeksi Saluran Pernapasan Akut (ISPA) merupakan salah satu gangguan yang dipicu paparan polusi asap.", "kunci": "Benar"}, {"id": "d", "teks": "Bulu hidung manusia mampu menyaring 100% seluruh gas beracun karbon monoksida dari kebakaran hutan.", "kunci": "Salah"}], "pembahasan": {"bab": "Bab 2 • Gangguan Pernapasan Akibat Polusi (PGK Benar/Salah)", "topik": "Dampak Kabut Asap Karhutla bagi Paru-Paru", "ringkasan_kunci": "a. BENAR  |  b. SALAH  |  c. BENAR  |  d. SALAH", "penjelasan": "Pembahasan setiap pernyataan berdasarkan teks bacaan kebakaran hutan:\n• Pernyataan a — BENAR: Debu halus berukuran mikroskopis (PM2.5) terlalu kecil untuk tertahan bulu hidung sehingga dapat lolos masuk jauh hingga ke alveolus.\n• Pernyataan b — SALAH: Kabut asap karhutla mengandung gas beracun (CO dan SO2) serta debu berbahaya yang justru memicu kambuhnya asma, bukan oksigen murni.\n• Pernyataan c — BENAR: Menghirup polusi asap pekat mengiritasi saluran napas dan memicu Infeksi Saluran Pernapasan Akut (ISPA).\n• Pernyataan d — SALAH: Bulu hidung hanya mampu menyaring partikel debu berukuran besar, tidak mampu menyaring gas beracun seperti karbon monoksida (CO).", "analisis_opsi": ["a. Benar → Tertulis langsung pada kalimat kedua bacaan.", "b. Salah → Kabut asap penuh gas beracun, bukan oksigen murni.", "c. Benar → Paparan asap memicu ISPA dan serangan asma.", "d. Salah → Gas karbon monoksida (CO) tidak bisa disaring oleh bulu hidung."], "tips": "Pada soal literasi bacaan, selalu cocokkan setiap pernyataan dengan kalimat fakta di dalam teks."}}, {"id": 32, "bagian": "II", "tipe": "pgk_bs", "teks": "Bacalah teks berikut dengan cermat!\n\nPelaksanaan Sistem Tanam Paksa di Nusantara\nAturan resmi Tanam Paksa menyatakan bahwa tanah yang digunakan untuk tanaman ekspor hanya 1/5 dari luas lahan petani dan bebas pajak. Namun pada praktiknya, para pejabat kolonial memaksa petani menyerahkan hingga 1/2 lahan mereka, bahkan lahan terbaik untuk padi habis ditanami tebu dan nila. Petani yang tidak memiliki lahan dipaksa bekerja di perkebunan melebihi batas waktu 66 hari tanpa upah yang layak. Akibatnya, tanaman padi terabaikan hingga timbul bencana kelaparan hebat di Demak dan Grobogan pada tahun 1849–1850.\n\nBerdasarkan bacaan di atas, tentukan apakah pernyataan-pernyataan berikut BENAR atau SALAH!", "gambar": null, "pernyataan": [{"id": "a", "teks": "Praktik Tanam Paksa di lapangan sering kali melanggar aturan resmi yang telah ditetapkan sebelumnya.", "kunci": "Benar"}, {"id": "b", "teks": "Petani pribumi mendapatkan keuntungan ekonomi yang sangat besar dari penjualan hasil panen tebu dan nila.", "kunci": "Salah"}, {"id": "c", "teks": "Bencana kelaparan di Demak dan Grobogan terjadi akibat lahan pertanian padi terabaikan untuk tanaman ekspor.", "kunci": "Benar"}, {"id": "d", "teks": "Waktu kerja petani non-lahan di perkebunan kolonial selalu dibatasi tepat kurang dari 10 hari saja.", "kunci": "Salah"}], "pembahasan": {"bab": "Bab 3 • Sistem Tanam Paksa (PGK Benar/Salah)", "topik": "Penyimpangan Praktik Cultuurstelsel", "ringkasan_kunci": "a. BENAR  |  b. SALAH  |  c. BENAR  |  d. SALAH", "penjelasan": "Pembahasan setiap pernyataan berdasarkan teks bacaan Tanam Paksa:\n• Pernyataan a — BENAR: Aturan resmi membatasi tanah tanam paksa hanya 1/5 bagian, tetapi praktiknya pejabat kolonial merampas hingga 1/2 lahan subur petani.\n• Pernyataan b — SALAH: Petani pribumi tidak mendapat keuntungan besar, justru mengalami kemiskinan dan penderitaan akibat kerja paksa tanpa upah layak.\n• Pernyataan c — BENAR: Bencana kelaparan hebat di Demak dan Grobogan (1849–1850) terjadi karena lahan padi rakyat habis dipakai menanam tebu dan nila.\n• Pernyataan d — SALAH: Bacaan menyebutkan petani non-lahan dipaksa bekerja melebihi batas waktu 66 hari (bukan kurang dari 10 hari).", "analisis_opsi": ["a. Benar → Praktik di lapangan menyimpang jauh dari aturan resmi.", "b. Salah → Keuntungan dinikmati Belanda, bukan petani pribumi.", "c. Benar → Sesuai informasi kalimat terakhir bacaan.", "d. Salah → Bekerja lebih dari 66 hari tanpa upah layak."], "tips": "Perhatikan angka dan fakta pembanding pada teks: aturan 1/5 vs praktik 1/2; batas 66 hari kerja paksa."}}, {"id": 33, "bagian": "II", "tipe": "pgk_mcma", "teks": "Perhatikan kartu gejala gangguan pencernaan pada gambar berikut!\n\nBerdasarkan kartu gejala di atas, pilihlah LEBIH DARI SATU tindakan pencegahan yang tepat dan efektif untuk mencegah timbulnya gangguan pencernaan tersebut!", "gambar": {"filename": "soal_33_kartu_gejala.png", "deskripsi": "Kartu Gejala Gangguan Pencernaan (lambung perih, mual, ulu hati terbakar, dan BAB keras)."}, "opsi": [{"id": "A", "teks": "Menerapkan pola makan teratur dan menghindari mengonsumsi makanan yang terlalu pedas atau asam saat perut kosong."}, {"id": "B", "teks": "Mengonsumsi makanan tinggi serat seperti buah-buahan dan sayuran serta cukup meminum air putih setiap hari."}, {"id": "C", "teks": "Mengonsumsi minuman berperisa tinggi gula dan mi instan setiap hari sebagai pengganti makanan pokok."}, {"id": "D", "teks": "Menghindari stres berlebihan dan tidak langsung berbaring setelah selesai makan."}], "kunci": ["A", "B", "D"], "pembahasan": {"bab": "Bab 1 • Pencegahan Gangguan Pencernaan (PGK Jawaban Ganda)", "topik": "Pola Hidup Sehat Menjaga Lambung dan Usus", "ringkasan_kunci": "Jawaban Benar: A, B, dan D (3 pilihan benar).", "penjelasan": "Kartu gejala menunjukkan keluhan lambung perih, mual, ulu hati terbakar (Maag/GERD), serta BAB keras (Konstipasi/Sembelit). Tindakan pencegahan yang tepat meliputi:\n• Mencegah Maag & GERD: Makan teratur tepat waktu, menghindari makanan terlalu pedas/asam saat perut kosong, mengelola stres, dan tidak langsung berbaring setelah makan.\n• Mencegah Konstipasi: Memperbanyak konsumsi makanan berserat tinggi (sayur dan buah) serta minum air putih yang cukup.", "analisis_opsi": ["Opsi A (BENAR): Pola makan teratur mencegah iritasi asam lambung (Maag).", "Opsi B (BENAR): Serat dari sayur/buah dan cukup air melancarkan BAB dan mencegah sembelit.", "Opsi C (SALAH): Minuman tinggi gula dan mi instan setiap hari rendah serat dan tinggi pengawet/natrium sehingga merusak kesehatan pencernaan.", "Opsi D (BENAR): Tidak langsung tiduran setelah makan mencegah asam lambung naik kembali ke kerongkongan (GERD)."], "tips": "Hindari kebiasaan 'habis makan langsung tiduran' karena melemahkan katup lambung dan memicu GERD!"}}, {"id": 34, "bagian": "II", "tipe": "pgk_mcma", "teks": "Perhatikan gambar sistem pernapasan berikut!\n\nBerdasarkan gambar tersebut, pilihlah LEBIH DARI SATU deskripsi fungsi yang sesuai dengan organ yang ditunjuk oleh huruf H dan A!", "gambar": {"filename": "soal_34_organ_hidung_alveolus.png", "deskripsi": "Gambar organ pernapasan dengan penanda huruf H (Rongga Hidung) dan huruf A (Alveolus)."}, "opsi": [{"id": "A", "teks": "Organ H berfungsi menyaring kotoran dengan rambut hidung serta menyesuaikan suhu dan kelembapan udara masuk."}, {"id": "B", "teks": "Organ A berfungsi sebagai tempat berlangsungnya pertukaran gas oksigen (O2) dan karbon dioksida (CO2)."}, {"id": "C", "teks": "Organ H berfungsi memompa udara langsung masuk ke dalam usus halus untuk proses pencernaan makanan."}, {"id": "D", "teks": "Organ A memiliki dinding selaput tipis yang dikelilingi oleh kapiler-kapiler darah tempat penyerapan oksigen."}], "kunci": ["A", "B", "D"], "pembahasan": {"bab": "Bab 2 • Struktur & Fungsi Organ Pernapasan (PGK Jawaban Ganda)", "topik": "Fungsi Rongga Hidung (H) dan Alveolus (A)", "ringkasan_kunci": "Jawaban Benar: A, B, dan D (3 pilihan benar).", "penjelasan": "Pada gambar ditunjukkan dua organ ujung sistem pernapasan: huruf H adalah Rongga Hidung (pintu masuk udara) dan huruf A adalah Alveolus (ujung saluran di dalam paru-paru).", "analisis_opsi": ["Opsi A (BENAR): Rongga hidung (H) menyaring debu dengan rambut hidung serta menyesuaikan suhu dan kelembapan udara.", "Opsi B (BENAR): Alveolus (A) menjadi tempat utama pertukaran gas O2 dan CO2.", "Opsi C (SALAH): Rongga hidung menyalurkan udara ke saluran pernapasan (faring-laring-trakea-paru-paru), bukan ke usus halus.", "Opsi D (BENAR): Dinding alveolus (A) sangat tipis dan dikelilingi kapiler darah agar pertukaran gas berlangsung cepat."], "tips": "Cek setiap opsi satu per satu: jika ada kata 'usus halus' pada fungsi organ pernapasan, pasti opsi tersebut pengecoh!"}}, {"id": 35, "bagian": "II", "tipe": "pgk_mcma", "teks": "Bacalah teks berikut dengan cermat!\n\nPerjuangan Tokoh Bangsa Melawan Penjajahan\nPerjuangan melawan penjajahan di Indonesia dilakukan melalui berbagai strategi. Pangeran Diponegoro memimpin perlawanan fisik yang sengit dalam Perang Jawa (1825–1830) dengan taktik gerilya. Di bidang pendidikan dan kebudayaan, Ki Hajar Dewantara mendirikan Taman Siswa pada tahun 1922 untuk memberikan akses pendidikan bagi rakyat pribumi. Sementara itu, dr. Cipto Mangunkusumo berjuang melalui jalur politik dan pelayanan medis untuk membela masyarakat kecil yang tertindas.\n\nBerdasarkan bacaan di atas, pilihlah LEBIH DARI SATU pernyataan yang sesuai dengan informasi dalam bacaan!", "gambar": null, "opsi": [{"id": "A", "teks": "Pangeran Diponegoro menggunakan taktik gerilya dalam memimpin perang melawan kolonial Belanda di Jawa."}, {"id": "B", "teks": "Ki Hajar Dewantara memperjuangkan kemerdekaan bangsa khusus melalui perlawanan angkatan perang di laut."}, {"id": "C", "teks": "Sekolah Taman Siswa didirikan oleh Ki Hajar Dewantara sebagai sarana akses pendidikan bagi rakyat pribumi."}, {"id": "D", "teks": "dr. Cipto Mangunkusumo memadukan pelayanan medis dokter dan pergerakan politik untuk membela rakyat."}], "kunci": ["A", "C", "D"], "pembahasan": {"bab": "Bab 3 • Strategi Perjuangan Tokoh Bangsa (PGK Jawaban Ganda)", "topik": "Perjuangan Pangeran Diponegoro, Ki Hajar Dewantara, dan dr. Cipto", "ringkasan_kunci": "Jawaban Benar: A, C, dan D (3 pilihan benar).", "penjelasan": "Bacaan menjelaskan tiga strategi berbeda dari tiga pahlawan nasional:\n1. Pangeran Diponegoro → Perjuangan fisik/bersenjata melalui taktik gerilya dalam Perang Jawa (1825–1830).\n2. Ki Hajar Dewantara → Perjuangan jalur pendidikan dan kebudayaan dengan mendirikan Taman Siswa (1922).\n3. dr. Cipto Mangunkusumo → Perjuangan jalur politik dan pelayanan medis untuk membela rakyat kecil.", "analisis_opsi": ["Opsi A (BENAR): Sesuai kalimat kedua teks (taktik gerilya Perang Jawa).", "Opsi B (SALAH): Ki Hajar Dewantara berjuang lewat pendidikan dan tulisan pers, bukan perlawanan angkatan laut.", "Opsi C (BENAR): Sesuai kalimat ketiga teks (pendirian Taman Siswa tahun 1922).", "Opsi D (BENAR): Sesuai kalimat keempat teks (jalur politik dan pelayanan medis)."], "tips": "Perjuangan bangsa Indonesia terbagi menjadi perjuangan fisik (sebelum 1908) dan perjuangan organisasi/pendidikan/politik (sesudah 1908)."}}, {"id": 36, "bagian": "III", "tipe": "uraian", "teks": "Perhatikan gambar menu makan siang berikut!\n\nBerdasarkan gambar menu makan siang tersebut:\na. Analisislah apakah menu makan siang di atas sudah sesuai dengan prinsip pedoman gizi seimbang \"Isi Piringku\" yang dicanangkan Kementerian Kesehatan?\nb. Berikan alasan lengkap berdasarkan komposisi zat gizi (makanan pokok, lauk-pauk, sayuran, dan buah-buahan) serta jelaskan rekomendasi perbaikan menunya agar gizi anak terpenuhi secara seimbang!", "gambar": {"filename": "soal_36_menu_makan_siang.png", "deskripsi": "Gambar piring makan siang berisi nasi putih tebal, dua potong ayam goreng tepung besar, dan satu mangkuk gorengan tanpa sayur maupun buah."}, "kata_kunci": ["belum", "tidak sesuai", "sayur", "buah", "serat", "vitamin", "isi piringku", "seimbang", "kurangi"], "pembahasan": {"bab": "Bab 1 • Pedoman Gizi Seimbang 'Isi Piringku' (Uraian)", "topik": "Analisis Menu Makan Siang dan Rekomendasi Perbaikan", "ringkasan_kunci": "a. BELUM SESUAI dengan pedoman 'Isi Piringku'.  |  b. Dominan karbohidrat & lemak, tanpa sayur dan buah.", "penjelasan": "Jawaban Lengkap yang Diharapkan:\na. Penilaian Kesesuaian:\nMenu makan siang pada gambar BELUM SESUAI dengan prinsip pedoman gizi seimbang 'Isi Piringku' dari Kementerian Kesehatan.\n\nb. Analisis Komposisi Zat Gizi & Rekomendasi Perbaikan:\n• Analisis Komposisi: Piring pada gambar hanya berisi nasi putih tebal (karbohidrat berlebih), ayam goreng tepung besar (protein hewani & lemak), serta satu mangkuk gorengan (lemak jenuh tinggi). Pada piring tersebut sama sekali tidak terdapat Sayuran dan Buah-buahan sebagai sumber vitamin, mineral, dan serat.\n• Prinsip 'Isi Piringku': Dalam satu piring makan, porsinya harus dibagi seimbang yaitu:\n  - 50% (setengah piring) untuk Makanan Pokok (2/3 bagian) dan Lauk-Pauk (1/3 bagian).\n  - 50% (setengah piring) untuk Sayuran (2/3 bagian) dan Buah-buahan (1/3 bagian).\n• Rekomendasi Perbaikan: Kurangi porsi nasi putih secukupnya dan hilangkan gorengan berlebih; tambahkan 1 porsi sayuran segar/matang (misalnya sup sayur atau tumis bayam/kangkung) serta 1 porsi buah segar (seperti pisang, pepaya, atau jeruk), dan lengkapi dengan minum air putih.", "analisis_opsi": ["Poin Penilaian 1: Menyatakan secara tegas bahwa menu BELUM SESUAI pedoman Isi Piringku.", "Poin Penilaian 2: Menyebutkan zat gizi yang ada (karbohidrat & lemak/protein) dan yang hilang (sayur & buah / vitamin, mineral, serat).", "Poin Penilaian 3: Memberikan saran perbaikan menu yang konkret dan seimbang."], "tips": "Ingat rumus 'Isi Piringku': Setengah piring = Karbohidrat + Lauk; Setengah piring lagi = Sayur + Buah!"}}, {"id": 37, "bagian": "III", "tipe": "uraian", "teks": "Dalam kehidupan sehari-hari, kita dapat memasukkan udara pernapasan melalui rongga hidung maupun rongga mulut. Namun, para ahli kesehatan sangat menganjurkan kita untuk selalu bernapas melalui hidung.\n\nJelaskan alasan ilmiah mengapa bernapas melalui rongga hidung jauh lebih baik dan dianjurkan bagi kesehatan tubuh dibandingkan bernapas melalui mulut! Sebutkan 3 struktur penyaring/pelindung yang ada di rongga hidung beserta fungsinya!", "gambar": null, "kata_kunci": ["rambut", "bulu hidung", "lendir", "mukus", "kapiler", "konka", "menyaring", "suhu", "kelembapan", "debu"], "pembahasan": {"bab": "Bab 2 • Struktur Pelindung Rongga Hidung (Uraian)", "topik": "Keunggulan Bernapas Melalui Hidung dibanding Mulut", "ringkasan_kunci": "Hidung memiliki 3 alat pelindung alami (rambut hidung, selaput lendir, dan kapiler darah/konka), sedangkan mulut tidak.", "penjelasan": "Jawaban Lengkap yang Diharapkan:\n1. Alasan Ilmiah:\nBernapas melalui rongga hidung jauh lebih sehat daripada melalui mulut karena rongga hidung memiliki struktur penyaring kotoran, pengatur suhu, dan pengatur kelembapan udara alami sebelum udara masuk ke paru-paru. Sebaliknya, rongga mulut tidak memiliki penyaring udara sehingga debu, kuman, dan udara kering/dingin langsung masuk dan mengiritasi tenggorokan serta paru-paru.\n\n2. Tiga Struktur Pelindung di Rongga Hidung beserta Fungsinya:\n• Rambut / Bulu Hidung: Berfungsi menyaring partikel debu dan kotoran berukuran besar yang terbawa udara.\n• Selaput Lendir (Mukus): Berfungsi menangkap kotoran halus serta kuman/bakteri yang lolos dari rambut hidung, sekaligus melembapkan udara pernapasan.\n• Kapiler Darah / Konka Hidung: Berfungsi menghangatkan atau menyesuaikan suhu udara luar agar sesuai dengan suhu normal tubuh sebelum masuk ke paru-paru.", "analisis_opsi": ["Poin Penilaian 1: Menjelaskan alasan perlindungan paru-paru (penyaringan, kelembapan, suhu) yang tidak dimiliki mulut.", "Poin Penilaian 2: Menyebutkan dan menjelaskan fungsi Rambut Hidung.", "Poin Penilaian 3: Menyebutkan dan menjelaskan fungsi Selaput Lendir (Mukus).", "Poin Penilaian 4: Menyebutkan dan menjelaskan fungsi Kapiler Darah / Konka."], "tips": "3 Tugas Utama Rongga Hidung terhadap udara: Menyaring (bulu hidung), Melembapkan (lendir), Menghangatkan (kapiler darah)."}}, {"id": 38, "bagian": "III", "tipe": "uraian", "teks": "Proses pernapasan manusia terdiri dari dua tahap utama, yaitu tahap inspirasi (menarik napas) dan tahap ekspirasi (mengembuskan napas).\n\nJelaskan secara rinci perbedaan antara proses inspirasi dan ekspirasi berdasarkan:\n1. Kondisi otot diafragma (kontraksi/relaksasi dan bentuknya).\n2. Perubahan volume dan tekanan udara di dalam rongga dada.\n3. Arah aliran udara pernapasan.", "gambar": null, "kata_kunci": ["kontraksi", "mendatar", "relaksasi", "melengkung", "membesar", "mengecil", "tekanan", "masuk", "keluar"], "pembahasan": {"bab": "Bab 2 • Mekanisme Pernapasan Manusia (Uraian)", "topik": "Perbedaan Lengkap Proses Inspirasi dan Ekspirasi", "ringkasan_kunci": "Inspirasi: Diafragma kontraksi (mendatar), volume membesar, tekanan mengecil, udara masuk.  |  Ekspirasi: Diafragma relaksasi (melengkung), volume mengecil, tekanan membesar, udara keluar.", "penjelasan": "Jawaban Lengkap yang Diharapkan:\nPerbedaan proses Inspirasi (menarik napas) dan Ekspirasi (mengembuskan napas) berdasarkan tiga aspek:\n\n1. Kondisi Otot Diafragma:\n• Inspirasi: Otot diafragma berkontraksi sehingga posisinya tertarik turun dan menjadi mendatar.\n• Ekspirasi: Otot diafragma berelaksasi (mengendur) sehingga posisinya kembali naik dan melengkung ke atas.\n\n2. Perubahan Volume dan Tekanan Udara di Rongga Dada:\n• Inspirasi: Volume rongga dada membesar, sehingga tekanan udara di dalam paru-paru mengecil (lebih rendah daripada tekanan udara luar).\n• Ekspirasi: Volume rongga dada mengecil, sehingga tekanan udara di dalam paru-paru membesar (lebih tinggi daripada tekanan udara luar).\n\n3. Arah Aliran Udara Pernapasan:\n• Inspirasi: Udara segar kaya oksigen (O2) mengalir masuk dari luar tubuh melalui hidung menuju paru-paru.\n• Ekspirasi: Udara sisa pernapasan kaya karbon dioksida (CO2) dan uap air terdorong keluar dari paru-paru melalui hidung.", "analisis_opsi": ["Poin Penilaian 1: Membandingkan kontraksi (mendatar) vs relaksasi (melengkung) diafragma.", "Poin Penilaian 2: Membandingkan volume membesar/tekanan mengecil vs volume mengecil/tekanan membesar.", "Poin Penilaian 3: Membandingkan arah aliran udara masuk (O2) vs udara keluar (CO2)."], "tips": "Semua kondisi Ekspirasi adalah KEBALIKAN persis dari kondisi Inspirasi!"}}, {"id": 39, "bagian": "III", "tipe": "uraian", "teks": "Pada awal abad ke-20, pemerintah kolonial Belanda memberlakukan kebijakan Politik Etis (Politik Balas Budi) sebagai respons terhadap kritikan ketidakadilan sistem Tanam Paksa. Kebijakan ini terangkum dalam program Trias van Deventer.\n\nSebutkan dan jelaskan secara singkat 3 program utama dalam Trias van Deventer tersebut beserta dampaknya bagi pergerakan nasional bangsa Indonesia!", "gambar": null, "kata_kunci": ["irigasi", "edukasi", "emigrasi", "transmigrasi", "pengairan", "sekolah", "pendidikan", "terpelajar", "cendekiawan"], "pembahasan": {"bab": "Bab 3 • Politik Etis / Balas Budi (Uraian)", "topik": "Trias van Deventer dan Dampaknya bagi Pergerakan Nasional", "ringkasan_kunci": "3 Program: Irigasi, Edukasi, Emigrasi. Dampak utama: Program Edukasi melahirkan kaum terpelajar pelopor pergerakan nasional.", "penjelasan": "Jawaban Lengkap yang Diharapkan:\n1. Tiga Program Utama Trias van Deventer (Politik Etis 1901):\n• Irigasi (Pengairan): Membangun dan memperbaiki saluran pengairan serta bendungan untuk mengairi lahan pertanian/sawah.\n• Edukasi (Pendidikan): Membangun sekolah-sekolah bagi rakyat pribumi agar memperoleh pendidikan dan keterampilan baca-tulis-hitung.\n• Emigrasi (Transmigrasi): Memindahkan penduduk dari Pulau Jawa yang padat menuju wilayah luar Jawa (seperti Sumatra) untuk membuka lahan perkebunan baru.\n\n2. Dampak Penting bagi Pergerakan Nasional Indonesia:\nMeskipun pelaksanaannya banyak dimanfaatkan untuk kepentingan perkebunan Belanda, program Edukasi (pendidikan) berhasil melahirkan golongan terpelajar/cendekiawan pribumi (seperti dr. Soetomo, Ki Hajar Dewantara, Soekarno, dan Moh. Hatta). Kaum terpelajar inilah yang kemudian mempelopori berdirinya organisasi pergerakan nasional modern (seperti Budi Utomo) dan membangkitkan kesadaran persatuan untuk meraih kemerdekaan Indonesia.", "analisis_opsi": ["Poin Penilaian 1: Menyebutkan dan menjelaskan Irigasi.", "Poin Penilaian 2: Menyebutkan dan menjelaskan Edukasi.", "Poin Penilaian 3: Menyebutkan dan menjelaskan Emigrasi.", "Poin Penilaian 4: Menjelaskan dampak lahirnya kaum terpelajar yang memelopori organisasi pergerakan nasional."], "tips": "Hafalkan 'I-E-E' (Irigasi, Edukasi, Emigrasi) — dan ingat bahwa EDUKASI menjadi senjata balik yang melahirkan pemimpin kemerdekaan!"}}, {"id": 40, "bagian": "III", "tipe": "uraian", "teks": "Para pahlawan bangsa telah berjuang dengan mengorbankan jiwa, raga, dan harta demi merebut serta mempertahankan kemerdekaan Indonesia. Sebagai generasi penerus bangsa yang hidup di masa kemerdekaan saat ini, kita harus mampu meneruskan semangat perjuangan mereka.\n\nSebutkan 4 cara konkret yang dapat kamu lakukan sebagai seorang pelajar dalam kehidupan sehari-hari untuk menghargai dan meneladani jasa para pahlawan bangsa!", "gambar": null, "kata_kunci": ["belajar", "upacara", "persatuan", "toleransi", "jujur", "disiplin", "prestasi", "menghormati", "cinta tanah air"], "pembahasan": {"bab": "Bab 3 • Meneladani Nilai Kepahlawanan (Uraian)", "topik": "4 Cara Konkret Pelajar Menghargai Jasa Pahlawan", "ringkasan_kunci": "1. Belajar tekun & berprestasi  |  2. Menjaga persatuan & toleransi  |  3. Mengikuti upacara dengan khidmat  |  4. Disiplin, jujur, dan mencintai produk/budaya bangsa.", "penjelasan": "Jawaban Lengkap yang Diharapkan:\nEmpat cara konkret yang dapat dilakukan seorang pelajar dalam kehidupan sehari-hari untuk menghargai dan meneladani jasa para pahlawan:\n1. Belajar dengan tekun dan bersungguh-sungguh untuk menguasai ilmu pengetahuan serta meraih prestasi yang membanggakan sekolah dan bangsa.\n2. Menjaga persatuan, kerukunan, dan sikap toleransi dengan menghormati teman yang berbeda suku, agama, ras, maupun budaya.\n3. Mengikuti upacara bendera setiap hari Senin maupun peringatan hari besar nasional dengan tertib dan khidmat sebagai wujud penghormatan simbol negara.\n4. Menerapkan sikap kepahlawanan sehari-hari seperti bersikap jujur saat ujian, disiplin menaati tata tertib, gemar menolong sesama, serta mencintai budaya dan produk dalam negeri.", "analisis_opsi": ["Poin Penilaian: Menyebutkan minimal 4 tindakan nyata yang relevan dengan kehidupan pelajar di sekolah maupun masyarakat."], "tips": "Pastikan jawaban menyebutkan tindakan nyata yang bisa kamu lakukan sendiri sebagai siswa kelas VI!"}}];
+
+    let studyMode = "direct";   // "direct" (langsung tampil pembahasan) | "quiz" (coba jawab dulu baru muncul pembahasan)
+    let viewLayout = "single";  // "single" (per soal) | "all" (semua soal terfilter)
+    let filteredList = [...BANK_PEMBAHASAN];
+    let currentIdx = 0;
+    let studiedSet = new Set([1]);
+    let quizSelections = {};
+    let musicPlaying = false;
+
+    function setFontScale(scale, btn) {
+      document.documentElement.style.setProperty("--font-scale", scale);
+      document.querySelectorAll(".font-controls button").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+    }
+
+    function toggleMusic() {
+      const bg = document.getElementById("bgMusic");
+      const btn = document.getElementById("btnMusic");
+      if (!bg) return;
+      if (musicPlaying) {
+        bg.pause();
+        musicPlaying = false;
+        btn.textContent = "🔇 Musik";
+      } else {
+        bg.volume = 0.22;
+        bg.play().then(() => {
+          musicPlaying = true;
+          btn.textContent = "🔊 Musik";
+        }).catch(() => {});
+      }
+    }
+
+    function setStudyMode(mode) {
+      studyMode = mode;
+      document.getElementById("btnModeDirect").classList.toggle("active", mode === "direct");
+      document.getElementById("btnModeQuiz").classList.toggle("active", mode === "quiz");
+      renderView();
+    }
+
+    function setViewLayout(layout) {
+      viewLayout = layout;
+      document.getElementById("btnViewSingle").classList.toggle("active", layout === "single");
+      document.getElementById("btnViewAll").classList.toggle("active", layout === "all");
+      document.getElementById("navSidebar").classList.toggle("hidden", layout === "all");
+      renderView();
+    }
+
+    function applyTopicFilter() {
+      const val = document.getElementById("filterTopic").value;
+      if (val === "all") {
+        filteredList = [...BANK_PEMBAHASAN];
+      } else if (val === "bab1") {
+        filteredList = BANK_PEMBAHASAN.filter(q => q.pembahasan.bab.startsWith("Bab 1"));
+      } else if (val === "bab2") {
+        filteredList = BANK_PEMBAHASAN.filter(q => q.pembahasan.bab.startsWith("Bab 2"));
+      } else if (val === "bab3") {
+        filteredList = BANK_PEMBAHASAN.filter(q => q.pembahasan.bab.startsWith("Bab 3"));
+      } else if (val === "pg") {
+        filteredList = BANK_PEMBAHASAN.filter(q => q.tipe === "pg");
+      } else if (val === "pgk") {
+        filteredList = BANK_PEMBAHASAN.filter(q => q.tipe === "pgk_bs" || q.tipe === "pgk_mcma");
+      } else if (val === "uraian") {
+        filteredList = BANK_PEMBAHASAN.filter(q => q.tipe === "uraian");
+      }
+      currentIdx = 0;
+      if (filteredList.length > 0) studiedSet.add(filteredList[0].id);
+      renderView();
+    }
+
+    function updateProgressBadge() {
+      document.getElementById("progressBadge").textContent =
+        `Dipahami: ${studiedSet.size} / ${BANK_PEMBAHASAN.length} Soal`;
+    }
+
+    function renderNavSidebar() {
+      const grid = document.getElementById("navGrid");
+      grid.innerHTML = "";
+      filteredList.forEach((q, idx) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "nav-item";
+        if (studiedSet.has(q.id)) btn.classList.add("studied");
+        if (idx === currentIdx) btn.classList.add("active");
+        btn.textContent = q.id;
+        btn.title = `Soal No. ${q.id} — ${q.pembahasan.topik}`;
+        btn.onclick = () => {
+          currentIdx = idx;
+          studiedSet.add(q.id);
+          renderView();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+        grid.appendChild(btn);
+      });
+      updateProgressBadge();
+    }
+
+    function zoomImage(src) {
+      document.getElementById("zoomedImg").src = src;
+      document.getElementById("zoomModal").classList.remove("hidden");
+    }
+
+    function handleImgFallback(el, deskripsi) {
+      el.parentElement.innerHTML = `
+        <div class="img-fallback">
+          <div style="font-size:22px; margin-bottom:4px;">🖼️ Ilustrasi Stimulus Soal</div>
+          <p style="font-size:14px; color:#1e293b;">${deskripsi}</p>
+        </div>
+      `;
+    }
+
+    function speakExplanation(qId) {
+      if (!("speechSynthesis" in window)) return;
+      const q = BANK_PEMBAHASAN.find(item => item.id === qId);
+      if (!q) return;
+      window.speechSynthesis.cancel();
+
+      const p = q.pembahasan;
+      const text = `Pembahasan Soal Nomor ${q.id}. ${p.topik}. ` +
+        `Kunci Jawaban: ${p.ringkasan_kunci}. ` +
+        `Penjelasan: ${p.penjelasan}. ` +
+        `Tips cepat: ${p.tips}`;
+
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "id-ID";
+      utter.rate = 0.98;
+      const voices = window.speechSynthesis.getVoices();
+      const idVoice = voices.find(v => v.lang && v.lang.toLowerCase().includes("id"));
+      if (idVoice) utter.voice = idVoice;
+      window.speechSynthesis.speak(utter);
+    }
+
+    function pickQuizOption(qId, optId, isMulti) {
+      if (isMulti) {
+        let arr = Array.isArray(quizSelections[qId]) ? [...quizSelections[qId]] : [];
+        if (arr.includes(optId)) arr = arr.filter(x => x !== optId);
+        else arr.push(optId);
+        quizSelections[qId] = arr;
+      } else {
+        quizSelections[qId] = optId;
+      }
+      studiedSet.add(qId);
+      renderView();
+    }
+
+    function revealQuizExplanation(qId) {
+      quizSelections["revealed_" + qId] = true;
+      studiedSet.add(qId);
+      renderView();
+    }
+
+    function buildQuestionCardHTML(q, showNavFooter) {
+      const p = q.pembahasan;
+      const typeLabelMap = {
+        pg: "Bagian I • Pilihan Ganda",
+        pgk_bs: "Bagian II • PG Kompleks (Benar / Salah)",
+        pgk_mcma: "Bagian II • PG Kompleks (Jawaban Lebih dari Satu)",
+        uraian: "Bagian III • Uraian"
+      };
+
+      const isRevealed = studyMode === "direct" ||
+        (q.tipe === "pg" && !!quizSelections[q.id]) ||
+        !!quizSelections["revealed_" + q.id];
+
+      // Gambar Stimulus
+      let imgHtml = "";
+      if (q.gambar && q.gambar.filename) {
+        const safeDesc = q.gambar.deskripsi.replace(/'/g, "\'");
+        imgHtml = `
+          <div class="image-box">
+            <img src="${q.gambar.filename}" alt="${q.gambar.deskripsi}"
+                 onclick="zoomImage(this.src)"
+                 onerror="handleImgFallback(this, '${safeDesc}')" />
+            <div class="img-hint">🔍 Klik gambar untuk memperbesar tampilan</div>
+          </div>
+        `;
+      }
+
+      // Area Jawaban
+      let answerHtml = "";
+      if (q.tipe === "pg") {
+        const picked = quizSelections[q.id];
+        const items = q.opsi.map(opt => {
+          let cls = "option-row";
+          let badge = opt.id;
+          if (studyMode === "quiz" && !isRevealed) {
+            cls += " interactive";
+          }
+          if (isRevealed) {
+            if (opt.id === q.kunci) {
+              cls += " correct";
+              badge = "✓ " + opt.id;
+            } else if (picked === opt.id && opt.id !== q.kunci) {
+              cls += " wrong-picked";
+              badge = "✕ " + opt.id;
+            }
+          }
+          const clickAttr = (studyMode === "quiz" && !isRevealed)
+            ? `onclick="pickQuizOption(${q.id}, '${opt.id}', false)"`
+            : "";
+          return `
+            <div class="${cls}" ${clickAttr}>
+              <div class="opt-letter">${badge}</div>
+              <div style="flex:1;">${opt.teks}</div>
+            </div>
+          `;
+        }).join("");
+
+        const quizHint = (studyMode === "quiz" && !isRevealed)
+          ? `<div style="font-size:13px; color:#4f46e5; font-weight:700; margin-bottom:8px;">👆 Klik salah satu pilihan jawaban untuk menguji pemahamanmu, lalu pembahasan akan terbuka!</div>`
+          : "";
+        answerHtml = quizHint + `<div class="options-list">${items}</div>`;
+      } else if (q.tipe === "pgk_mcma") {
+        const pickedArr = Array.isArray(quizSelections[q.id]) ? quizSelections[q.id] : [];
+        const items = q.opsi.map(opt => {
+          let cls = "option-row";
+          let badge = opt.id;
+          const isKey = q.kunci.includes(opt.id);
+          const isPicked = pickedArr.includes(opt.id);
+
+          if (!isRevealed) {
+            cls += " interactive";
+            if (isPicked) badge = "☑ " + opt.id;
+          } else {
+            if (isKey) {
+              cls += " correct";
+              badge = "✓ " + opt.id;
+            } else if (isPicked && !isKey) {
+              cls += " wrong-picked";
+              badge = "✕ " + opt.id;
+            }
+          }
+          const clickAttr = !isRevealed
+            ? `onclick="pickQuizOption(${q.id}, '${opt.id}', true)"`
+            : "";
+          return `
+            <div class="${cls}" ${clickAttr}>
+              <div class="opt-letter">${badge}</div>
+              <div style="flex:1;">${opt.teks}</div>
+            </div>
+          `;
+        }).join("");
+
+        const revealBtn = (!isRevealed)
+          ? `<button type="button" class="btn btn-primary" style="margin-bottom:14px;" onclick="revealQuizExplanation(${q.id})">🔍 Cek Jawaban & Buka Pembahasan</button>`
+          : "";
+        answerHtml = `<div class="options-list">${items}</div>` + revealBtn;
+      } else if (q.tipe === "pgk_bs") {
+        const rows = q.pernyataan.map((st, idx) => {
+          const keyBadge = isRevealed
+            ? (st.kunci === "Benar"
+                ? `<span class="pill-benar">✓ BENAR</span>`
+                : `<span class="pill-salah">✕ SALAH</span>`)
+            : `<span style="color:#64748b; font-size:12px;">Klik tombol di bawah</span>`;
+          return `
+            <tr>
+              <td><strong>${idx + 1}.</strong> ${st.teks}</td>
+              <td class="center">${keyBadge}</td>
+            </tr>
+          `;
+        }).join("");
+
+        const revealBtn = (!isRevealed)
+          ? `<button type="button" class="btn btn-primary" style="margin-bottom:14px;" onclick="revealQuizExplanation(${q.id})">🔍 Buka Kunci Benar/Salah & Pembahasan</button>`
+          : "";
+        answerHtml = `
+          <table class="bs-table">
+            <thead>
+              <tr>
+                <th>Pernyataan</th>
+                <th class="center">Kunci Jawaban</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        ` + revealBtn;
+      } else if (q.tipe === "uraian") {
+        const revealBtn = (!isRevealed)
+          ? `
+            <textarea style="width:100%; min-height:100px; padding:12px; border-radius:12px; border:2px solid #cbd5e1; margin-bottom:10px; font-family:inherit; font-size:15px;"
+              placeholder="Coba tuliskan poin-poin jawabanmu di sini sebelum membuka pembahasan..."></textarea>
+            <button type="button" class="btn btn-primary" style="margin-bottom:14px;" onclick="revealQuizExplanation(${q.id})">🔍 Buka Jawaban Lengkap & Pembahasan</button>
+          `
+          : "";
+        answerHtml = revealBtn;
+      }
+
+      // Kotak Pembahasan Detail
+      let pembahasanHtml = "";
+      if (isRevealed) {
+        const analisisItems = p.analisis_opsi.map(line => `<li>${line}</li>`).join("");
+        pembahasanHtml = `
+          <div class="pembahasan-box">
+            <div class="pembahasan-header">
+              <div class="pembahasan-title">💡 PEMBAHASAN DETAIL SOAL NO. ${q.id}</div>
+              <button type="button" class="btn btn-purple btn-speak" onclick="speakExplanation(${q.id})">
+                🔊 Dengarkan Pembahasan
+              </button>
+            </div>
+
+            <div class="kunci-banner">
+              ✅ Kunci Jawaban: ${p.ringkasan_kunci}
+            </div>
+
+            <div class="pembahasan-section">
+              <h4>📘 Penjelasan Konsep IPAS:</h4>
+              <div>${p.penjelasan}</div>
+            </div>
+
+            <div class="pembahasan-section">
+              <h4>🔎 Analisis Pilihan & Poin Penilaian:</h4>
+              <ul class="analisis-list">${analisisItems}</ul>
+            </div>
+
+            <div class="tips-box">
+              ⭐ Tips Ingat Cepat: ${p.tips}
+            </div>
+          </div>
+        `;
+      }
+
+      // Footer Navigasi jika mode per soal
+      let footerHtml = "";
+      if (showNavFooter) {
+        footerHtml = `
+          <div class="nav-footer-btns">
+            <button type="button" class="btn btn-light" onclick="prevQuestion()" ${currentIdx === 0 ? "disabled" : ""}>
+              ⬅️ Soal Sebelumnya
+            </button>
+            <span style="font-size:13px; font-weight:700; color:#64748b;">
+              Menampilkan ${currentIdx + 1} dari ${filteredList.length} soal
+            </span>
+            <button type="button" class="btn btn-primary" onclick="nextQuestion()" ${currentIdx >= filteredList.length - 1 ? "disabled" : ""}>
+              Soal Berikutnya ➡️
+            </button>
+          </div>
+        `;
+      }
+
+      return `
+        <article class="card">
+          <div class="q-header">
+            <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+              <span class="badge-no">Soal No. ${q.id}</span>
+              <span class="badge-bab">${p.bab}</span>
+            </div>
+            <span class="badge-type">${typeLabelMap[q.tipe]}</span>
+          </div>
+
+          <div class="q-text">${q.teks}</div>
+          ${imgHtml}
+          ${answerHtml}
+          ${pembahasanHtml}
+          ${footerHtml}
+        </article>
+      `;
+    }
+
+    function renderView() {
+      const container = document.getElementById("questionsContainer");
+      if (filteredList.length === 0) {
+        container.innerHTML = `<div class="card"><p>Tidak ada soal pada kategori filter ini.</p></div>`;
+        return;
+      }
+
+      if (viewLayout === "single") {
+        const q = filteredList[currentIdx];
+        studiedSet.add(q.id);
+        container.innerHTML = buildQuestionCardHTML(q, true);
+        renderNavSidebar();
+      } else {
+        filteredList.forEach(q => studiedSet.add(q.id));
+        updateProgressBadge();
+        container.innerHTML = filteredList.map(q => buildQuestionCardHTML(q, false)).join("");
+      }
+    }
+
+    function prevQuestion() {
+      if (currentIdx > 0) {
+        currentIdx--;
+        renderView();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+
+    function nextQuestion() {
+      if (currentIdx < filteredList.length - 1) {
+        currentIdx++;
+        renderView();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+
+    function printStudyGuide() {
+      setStudyMode("direct");
+      setViewLayout("all");
+      setTimeout(() => window.print(), 300);
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      renderView();
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.getVoices();
+      }
+    });
+  </script>
+</body>
+</html>
